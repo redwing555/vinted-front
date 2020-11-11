@@ -7,10 +7,13 @@ const HeroBanner = () => {
   return (
     <section className="hero-banner">
       <img src={Banner} alt="" />
-      <img className="tear" src={Tear} alt="" />
       <div>
         <h1>Prêts à faire du tri dans vos placards ?</h1>
         <button>Commencer à vendre</button>
+        <p>Découvrir comment ça marche</p>
+      </div>
+      <div>
+        <img src={Tear} alt="" />
       </div>
     </section>
   );
