@@ -1,38 +1,232 @@
-.App {
-  text-align: center;
-}
+/* GLOBAL */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.loading {
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+/* HEADER  */
+header {
+  border-bottom: 1px solid #09aeb8;
+  padding: 10px 0;
+}
+
+header input {
+  width: 300px;
+  background-color: #f3f5f5;
+  border: none;
+  color: #111111;
+  padding: 10px 20px;
+  outline: none;
+  border-radius: 5px;
+}
+header .container {
+  justify-content: space-between;
+  display: flex;
+  margin: auto;
+  max-width: 1300px;
+  width: 90%;
+}
+header .container > div {
+  align-items: center;
+}
+
+header img {
+  width: 83px;
+  align-self: center;
+}
+
+header button:first-child {
+  margin-right: 30px;
+}
+
+header button:first-child {
+  border: 1px solid #09aeb8;
+  background-color: white;
+  color: #09aeb8;
+  border-radius: 5px;
+  padding: 10px 15px;
+  outline: none;
+  cursor: pointer;
+}
+
+header button:last-child {
+  border: none;
+  background-color: #09aeb8;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 15px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* HERO BANNER */
+
+.hero-banner {
+  position: relative;
+}
+
+.hero-banner h1 {
+  font-size: 34px;
+  line-height: 42.5px;
+  color: #111111;
+  font-weight: bold;
+  margin-right: 80px;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.tear {
+  width: 100%;
+  height: 30px;
+  font-size: 10px;
+  position: absolute;
+  bottom: 0px;
+  z-index: 1000;
+}
+
+.hero-banner div {
+  position: absolute;
+  top: 25%;
+  background-color: #fff;
+  width: 400px;
+  height: 300px;
+  left: 300px;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: 565px;
+  object-fit: cover;
+}
+
+.hero-banner button {
+  font-size: 16px;
+  line-height: 22px;
+  background-color: #09aeb8;
+  border: none;
+  outline: none;
   color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-left: 30px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+/* main */
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
+  max-width: 1400px;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 
-.App-link {
-  color: #61dafb;
+main a {
+  text-decoration: none;
+  color: #999999;
+  font-size: 12px;
+  line-height: 16px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.home-product-item {
+  flex: 1;
+  margin: 20px 10px;
+}
+
+.home-product-item .product-price p:first-child {
+  font-size: 14px;
+  line-height: 18px;
+  color: #111111;
+  font-weight: bold;
+}
+
+.home-product-item .product-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-product-item div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-product-item img:first-child {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.home-product-item img:last-child {
+  width: 235px;
+  height: 355px;
+  object-fit: cover;
+}
+
+/* OFFER ITEM PAGE */
+
+.offer-section {
+  background-color: #ebedee;
+  display: flex;
+}
+
+.offer-product {
+  display: flex;
+  margin: auto;
+  margin-top: 100px;
+  align-items: center;
+  padding-bottom: 150px;
+}
+
+.offer-product > div:first-child img {
+  margin-right: 80px;
+  width: 400px;
+}
+
+.offer-product > div:nth-child(2) {
+  background-color: #fff;
+  width: 450px;
+  padding: 30px 30px;
+}
+
+.offer-product > div .user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.offer-product > div .user img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.offer-description {
+  display: flex;
+  justify-content: space-between;
+}
+
+.offer-product button {
+  border: none;
+  background-color: #09aeb8;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 15px;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  margin: auto;
+  width: 90%;
+  justify-content: center;
 }
