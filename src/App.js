@@ -6,6 +6,7 @@ import Home from "./containers/Home/index";
 import Offer from "./containers/Offer/index";
 import Login from "./containers/Login/index";
 import SignUp from "./containers/SignUp/index";
+import Cookies from "js-cookie";
 
 function App() {
   const [token, setToken] = useState(null);
