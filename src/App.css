@@ -52,18 +52,20 @@ header img {
   width: 83px;
 }
 
-header button:first-child {
+header .login-button {
   border: 1px solid #09aeb8;
   background-color: white;
   color: #09aeb8;
+  font-size: 13px;
   border-radius: 5px;
   padding: 10px 15px;
   outline: none;
   cursor: pointer;
   margin-right: 30px;
+  text-decoration: none;
 }
 
-header button:last-child {
+header button {
   border: none;
   background-color: #09aeb8;
   color: #fff;
@@ -274,4 +276,58 @@ main a {
   width: 90%;
   justify-content: center;
   margin-top: 20px;
+}
+
+/* LOGIN FORM */
+
+.login-form {
+  font-size: 16px;
+  line-height: 22px;
+  width: 250px;
+  margin: 150px auto;
+}
+
+.login-form h2 {
+  display: flex;
+  justify-content: center;
+  font-family: "Maison Neue Bold";
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.login-form form {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form input {
+  margin-bottom: 20px;
+  font-size: inherit;
+}
+
+.login-form a {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  text-decoration: none;
+  color: #09aeb8;
+  text-align: center;
+}
+
+.login-form input[type="submit"] {
+  border: none;
+  background-color: #09aeb8;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 15px;
+  outline: none;
+  cursor: pointer;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  border: none;
+  border-bottom: 1px solid #e1e1e1;
+  outline: none;
 }

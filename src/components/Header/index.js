@@ -14,7 +14,9 @@ const Header = () => {
           <input type="text" placeholder="Rechercher des articles" />
         </div>
         <div>
-          <button>S'inscrire | Se connecter</button>
+          <Link className="login-button" to="/login">
+            S'inscrire | Se connecter
+          </Link>
           <button>Vends tes articles</button>
         </div>
       </div>

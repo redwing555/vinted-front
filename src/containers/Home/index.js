@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import ClothingItem from "../../components/ClothingItem";
 import Header from "../../components/Header/index";
 import HeroBanner from "../../components/HeroBanner/index";
+import Loader from "react-loader-spinner";
 import axios from "axios";
-
-import Loading from "../../assets/img/loading.gif";
 
 const Home = () => {
   const [offers, setOffers] = useState([]);
@@ -28,7 +27,13 @@ const Home = () => {
 
   return isLoading === true ? (
     <div className="loading">
-      <img src={Loading} alt="loading" />
+      <Loader
+        type="Oval"
+        color="#09aeb8"
+        height={100}
+        width={100}
+        timeout={3000} //3 secs
+      />{" "}
     </div>
   ) : (
     <>
