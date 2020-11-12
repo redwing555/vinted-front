@@ -3,13 +3,11 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-import Header from "../../components/Header/index";
-
-const Login = () => {
+const Login = ({ setUser }) => {
   let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [error, setError] = useState("");
+  const [error, setError] = useState("");
 
   const handleEmail = (ev) => {
     setEmail(ev.target.value);
@@ -34,17 +32,16 @@ const Login = () => {
       );
 
       if (response.status === 200) {
+        const token = response.data.token;
+        setUser(token);
         history.push("/");
-      } else {
-        alert("Mdps mauvais !");
       }
     } catch (error) {
-      console.log(error.message);
+      setError(error.response.data.message || error.response.data.error);
     }
   };
   return (
     <>
-      <Header />
       <section className="login-form">
         <h2>Se connecter</h2>
         <form onSubmit={handleSubmit}>
@@ -52,9 +49,10 @@ const Login = () => {
           <input type="password" onChange={handlePassword} value={password} />
           <input type="submit" value="Se connecter" />
         </form>
+        <p>{error}</p>
         <Link to="signup">
           <p>Pas de compte ? Cliquez ici pour vous connecter</p>
-        </Link>{" "}
+        </Link>
       </section>
     </>
   );

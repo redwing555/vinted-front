@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ClothingItem from "../../components/ClothingItem";
-import Header from "../../components/Header/index";
 import HeroBanner from "../../components/HeroBanner/index";
 import Loader from "react-loader-spinner";
 import axios from "axios";
@@ -37,7 +36,6 @@ const Home = () => {
     </div>
   ) : (
     <>
-      <Header />
       <HeroBanner />
       <main>
         <ClothingItem offers={offers} />

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import Header from "../../components/Header/index";
 
-const SignUp = () => {
+const SignUp = ({ setUser }) => {
   let history = useHistory();
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleUsername = (ev) => {
     setUsername(ev.target.value);
@@ -38,17 +38,16 @@ const SignUp = () => {
       );
 
       if (response.status === 200) {
+        const token = response.data.token;
+        setUser(token);
         history.push("/");
-      } else {
-        alert(response.message);
       }
     } catch (error) {
-      console.log(error.message);
+      setError(error.response.data.message || error.response.data.error);
     }
   };
   return (
     <>
-      <Header />
       <section className="login-form">
         <h2>S'inscrire</h2>
         <form onSubmit={handleSubmit}>
@@ -57,6 +56,7 @@ const SignUp = () => {
           <input type="password" onChange={handlePassword} value={password} />
           <input type="submit" value="S'inscrire" />
         </form>
+        <p>{error}</p>
       </section>
     </>
   );

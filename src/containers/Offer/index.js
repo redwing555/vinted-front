@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import OfferItem from "../../components/OfferItem/index";
-import Header from "../../components/Header/index";
 import { useParams } from "react-router-dom";
 import Loader from "react-loader-spinner";
 
@@ -39,7 +38,6 @@ const Offer = () => {
     </div>
   ) : (
     <>
-      <Header />
       <section className="offer-section">
         <OfferItem offer={offer} />
       </section>
