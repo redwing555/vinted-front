@@ -19,9 +19,20 @@ Clone this repository :
 
 ```
 git clone https://github.com/cadupuy/vinted-front
+cd vinted-front
 ```
 
-Open the `index.html` file in your browser to view the site.
+Install packages :
+
+```
+yarn
+```
+
+When installation is complete, run it :
+
+```
+yarn start
+```
 
 ## Contributing
 
