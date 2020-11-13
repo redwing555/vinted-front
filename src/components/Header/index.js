@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Logo from "../../assets/img/vinted.png";
 
-const Header = ({ setUser, token, setModal }) => {
+const Header = ({ setUser, token, setModalLogin }) => {
   const handleLogin = () => {
-    setModal(true);
+    setModalLogin(true);
   };
 
   const handleClick = () => {
