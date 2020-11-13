@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-const Login = ({ setUser }) => {
+const Modal = ({ setUser }) => {
   let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,31 +41,21 @@ const Login = ({ setUser }) => {
     }
   };
   return (
-    <section className="login-form">
-      <div className="container">
+    <>
+      <section className="login-form">
         <h2>Se connecter</h2>
         <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            onChange={handleEmail}
-            value={email}
-            placeholder="Adresse email"
-          />
-          <input
-            type="password"
-            onChange={handlePassword}
-            value={password}
-            placeholder="Password"
-          />
+          <input type="email" onChange={handleEmail} value={email} />
+          <input type="password" onChange={handlePassword} value={password} />
           <input type="submit" value="Se connecter" />
         </form>
         <p>{error}</p>
         <Link to="signup">
           <p>Pas de compte ? Cliquez ici pour vous connecter</p>
         </Link>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
-export default Login;
+export default Modal;

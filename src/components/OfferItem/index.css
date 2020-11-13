@@ -1,0 +1,92 @@
+/* OFFER ITEM PAGE */
+
+.offer-section {
+  background-color: #ebedee;
+  display: flex;
+  height: 100%;
+
+  padding-bottom: 80px;
+}
+
+.offer-product {
+  display: flex;
+  margin: auto;
+  margin-top: 90px;
+  align-items: flex-start;
+  padding-bottom: 150px;
+}
+
+.offer-product > div:first-child {
+  flex: 3;
+}
+
+.offer-product > div:last-child {
+  flex: 1;
+}
+
+.offer-product > div:first-child img {
+  margin-right: 80px;
+  width: 462px;
+  height: 624px;
+  object-fit: cover;
+}
+
+.offer-product > div:last-child {
+  background-color: #fff;
+  width: 295px;
+  padding: 30px 30px;
+  box-sizing: border-box;
+}
+
+.offer-product .user-description p:first-child {
+  color: #111111;
+  overflow-wrap: break-word;
+  margin-top: 15px;
+  font-family: "Maison Neue Bold";
+}
+
+.offer-product .user-description p:last-child {
+  overflow-wrap: break-word;
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 22px;
+  color: #666666;
+}
+
+.offer-description {
+  display: flex;
+  justify-content: space-between;
+}
+
+.offer-product > div:nth-child(2) > p:first-child {
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 10px;
+}
+
+.offer-description > p:first-child {
+  color: #999999;
+}
+.offer-description > p:last-child {
+  color: #666666;
+}
+
+.offer-description > p {
+  font-size: 13px;
+  line-height: 19.5px;
+}
+
+.offer-product button {
+  border: none;
+  background-color: #09aeb8;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 15px;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  margin: auto;
+  width: 90%;
+  justify-content: center;
+  margin-top: 20px;
+}

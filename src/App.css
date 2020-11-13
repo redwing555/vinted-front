@@ -3,7 +3,6 @@
 body {
   font-family: "Maison Neue", sans-serif;
 }
-
 .loading {
   width: 100vw;
   height: 100vh;
@@ -11,280 +10,36 @@ body {
   justify-content: center;
   align-items: center;
 }
-
 hr {
-  border-top: 1px solid #09aeb8;
-}
-/* HEADER  */
-header {
-  border-bottom: 1px solid #09aeb8;
-  padding: 10px 0;
-  position: fixed;
-  top: 0px;
-  background-color: #fff;
-  z-index: 100000;
-  width: 100%;
-}
-
-header input {
-  width: 400px;
-  height: 20px;
-  background-color: #f3f5f5;
-  border: none;
-  color: #111111;
-  padding: 10px 20px;
-  outline: none;
-  border-radius: 5px;
-}
-header .container {
-  justify-content: space-between;
-  display: flex;
-  margin: auto;
-  max-width: 1300px;
-  width: 90%;
-}
-
-header .container > div {
-  align-self: center;
-}
-
-header img {
-  width: 83px;
-}
-
-header .login-button {
-  border: 1px solid #09aeb8;
-  background-color: white;
+  height: 1px;
   color: #09aeb8;
-  font-size: 13px;
-  border-radius: 5px;
-  padding: 10px 15px;
-  outline: none;
-  cursor: pointer;
-  margin-right: 30px;
-  text-decoration: none;
 }
 
-header button {
-  border: none;
-  background-color: #09aeb8;
-  color: #fff;
-  border-radius: 5px;
-  padding: 10px 15px;
-  outline: none;
-  cursor: pointer;
-}
-
-/* HERO BANNER */
-
-.hero-banner {
-  position: relative;
-  overflow: hidden;
-  margin-top: 60px;
-}
-
-.hero-banner h1 {
-  font-size: 34px;
-  line-height: 42.5px;
-  color: #111111;
-  font-weight: bold;
-  margin-right: 50px;
-  margin-left: 30px;
-  margin-top: 50px;
-  font-family: "Maison Neue Bold", sans-serif;
-}
-
-.hero-banner p {
-  color: #09aeb8;
-  font-size: 14px;
-  margin-right: 50px;
-  margin-top: 30px;
-  margin-left: 30px;
-  cursor: pointer;
-}
-
-.hero-banner > div:nth-child(3) img {
-  position: absolute;
-  bottom: 0px;
-  left: 45%;
-  width: 100%;
-  height: auto;
-}
-
-.hero-banner > div:nth-child(2) {
-  position: absolute;
-  top: 25%;
-  background-color: #fff;
-  width: 400px;
-  height: 300px;
-  left: 300px;
-}
-
-.hero-banner img {
-  width: 100%;
-  height: 565px;
-  object-fit: cover;
-}
-
-.hero-banner button {
-  font-size: 16px;
-  line-height: 22px;
-  background-color: #09aeb8;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin-left: 30px;
-  margin-top: 30px;
-  cursor: pointer;
-}
-/* main */
-
-main {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 90%;
-  margin: auto;
-  max-width: 1400px;
-  margin-top: 20px;
-  margin-bottom: 50px;
-}
-
-main a {
-  text-decoration: none;
-  color: #999999;
-  font-size: 12px;
-  line-height: 16px;
-}
-
-.home-product-item {
-  flex: 1;
-  margin: 20px 10px;
-}
-
-.home-product-item .product-price p:first-child {
-  font-size: 14px;
-  line-height: 18px;
-  color: #111111;
-  font-weight: bold;
-  font-family: "Maison Neue Bold", sans-serif;
-}
-
-.home-product-item .product-price {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.home-product-item div:first-child {
-  display: flex;
-  align-items: center;
-  margin-bottom: 7px;
-}
-
-.home-product-item img:first-child {
-  width: 25px;
-  height: 25px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.home-product-item img:nth-child(2) {
-  width: 235px;
-  height: 355px;
-  object-fit: cover;
-}
-
-/* OFFER ITEM PAGE */
-
-.offer-section {
-  background-color: #ebedee;
-  display: flex;
-}
-
-.offer-product {
-  display: flex;
-  margin: auto;
-  margin-top: 100px;
-  align-items: center;
-  padding-bottom: 150px;
-}
-
-.offer-product > div:first-child img {
-  margin-right: 80px;
-  width: 400px;
-}
-
-.offer-product > div:nth-child(2) {
-  background-color: #fff;
-  width: 295px;
-  padding: 30px 30px;
-  box-sizing: border-box;
-}
-
-.offer-product .user-description p:first-child {
-  color: #111111;
-  overflow-wrap: break-word;
-  margin-top: 15px;
-  font-family: "Maison Neue Bold";
-}
-
-.offer-product .user-description p:last-child {
-  overflow-wrap: break-word;
-  margin-top: 12px;
-  font-size: 16px;
-  line-height: 22px;
-  color: #666666;
-}
-
-.offer-description {
-  display: flex;
-  justify-content: space-between;
-}
-
-.offer-product > div:nth-child(2) > p:first-child {
-  font-size: 24px;
-  line-height: 32px;
-  margin-bottom: 10px;
-}
-
-.offer-description > p:first-child {
-  color: #999999;
-}
-.offer-description > p:last-child {
-  color: #666666;
-}
-
-.offer-description > p {
-  font-size: 13px;
-  line-height: 19.5px;
-}
-
-.offer-product button {
-  border: none;
-  background-color: #09aeb8;
-  color: #fff;
-  border-radius: 5px;
-  padding: 10px 15px;
-  outline: none;
-  cursor: pointer;
-  display: flex;
-  margin: auto;
-  width: 90%;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-/* LOGIN FORM */
+/* 
+----------------------------------- 
+MODAL - FORM
+----------------------------------- 
+*/
 
 .login-form {
-  font-size: 16px;
-  line-height: 22px;
-  width: 250px;
-  margin: 150px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  top: 0px;
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.login-form .container {
+  display: flex;
+  width: 500px;
+  background-color: #fff;
+  height: 400px;
+  box-shadow: 0 22px 24px 0 rgba(46, 51, 51, 0.07);
 }
 
 .login-form h2 {
@@ -296,14 +51,20 @@ main a {
 }
 
 .login-form form {
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  width: 335px;
+  background-color: white;
+  border-radius: 4px;
 }
 
 .login-form input {
   margin-bottom: 20px;
   font-size: inherit;
+  color: black;
 }
 
 .login-form a {
@@ -327,6 +88,79 @@ main a {
 
 .login-form input[type="email"],
 .login-form input[type="password"] {
+  border: none;
+  border-bottom: 1px solid #e1e1e1;
+  outline: none;
+  color: black;
+}
+
+/* SIGNNNNNNUUPPPP */
+
+.signUp-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.signUp-form .container {
+  width: 400px;
+  background-color: #fff;
+  height: 500px;
+}
+
+.signUp-form h2 {
+  display: flex;
+  justify-content: center;
+  font-family: "Maison Neue Bold";
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.signUp-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  width: 335px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 22px 24px 0 rgba(46, 51, 51, 0.07);
+}
+
+.signUp-form input {
+  margin-bottom: 20px;
+  font-size: inherit;
+}
+
+.signUp-form a {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  text-decoration: none;
+  color: #09aeb8;
+  text-align: center;
+}
+
+.signUp-form input[type="submit"] {
+  border: none;
+  background-color: #09aeb8;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 15px;
+  outline: none;
+  cursor: pointer;
+}
+
+.signUp-form input[type="email"],
+.signUp-form input[type="password"] {
   border: none;
   border-bottom: 1px solid #e1e1e1;
   outline: none;

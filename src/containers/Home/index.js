@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ClothingItem from "../../components/ClothingItem";
+import ClothingItem from "../../components/HomeItem";
 import HeroBanner from "../../components/HeroBanner/index";
 import Loader from "react-loader-spinner";
 import axios from "axios";

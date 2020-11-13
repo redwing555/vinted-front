@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./index.css";
+
 import Banner from "../../assets/img/banner.jpeg";
 import Tear from "../../assets/img/tear.svg";
 

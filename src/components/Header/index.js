@@ -1,36 +1,48 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./index.css";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Logo from "../../assets/img/vinted.png";
 
-const Header = ({ setUser, token }) => {
+const Header = ({ setUser, token, setModal }) => {
+  const handleLogin = () => {
+    setModal(true);
+  };
+
   const handleClick = () => {
     setUser(null);
   };
   return (
-    <header>
-      <div className="container">
-        <div>
-          <Link to="/">
-            <img src={Logo} alt="logo" />
-          </Link>
-          <input type="text" placeholder="Rechercher des articles" />
-        </div>
-
-        {token ? (
+    <>
+      <header>
+        <div className="container">
           <div>
-            <button onClick={handleClick}>Déconnexion</button>
-          </div>
-        ) : (
-          <div>
-            <Link className="login-button" to="/login">
-              S'inscrire | Se connecter
+            <Link to="/">
+              <img src={Logo} alt="logo" />
             </Link>
+            <div className="input-header">
+              <input type="text" placeholder="Rechercher des articles" />
+              <FontAwesomeIcon icon="search" />
+            </div>
           </div>
-        )}
-        <button>Vends tes articles</button>
-      </div>
-    </header>
+          <div>
+            {token ? (
+              <div className="logout" onClick={handleClick}>
+                Déconnexion
+              </div>
+            ) : (
+              <div className="login-signup" onClick={handleLogin}>
+                S'inscrire | Se Connecter
+              </div>
+            )}
+
+            <button>Vends tes articles</button>
+          </div>
+        </div>
+      </header>
+    </>
   );
 };
 

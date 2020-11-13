@@ -7,9 +7,15 @@ import Offer from "./containers/Offer/index";
 import Login from "./containers/Login/index";
 import SignUp from "./containers/SignUp/index";
 import Cookies from "js-cookie";
+import Modal from "./components/Modal/index";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+library.add(faSearch);
 
 function App() {
   const [token, setToken] = useState(Cookies.get("tokenUser") || null);
+  const [modal, setModal] = useState(false);
 
   const setUser = (tokenToSet) => {
     if (tokenToSet) {
@@ -23,7 +29,9 @@ function App() {
 
   return (
     <Router>
-      <Header setUser={setUser} token={token} />
+      {modal === true && <Modal setUser={setUser} />}
+
+      <Header setUser={setUser} token={token} setModal={setModal} />
 
       <Switch>
         <Route path="/login">

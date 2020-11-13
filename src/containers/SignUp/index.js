@@ -47,18 +47,33 @@ const SignUp = ({ setUser }) => {
     }
   };
   return (
-    <>
-      <section className="login-form">
+    <section className="SignUp-form">
+      <div className="container">
         <h2>S'inscrire</h2>
         <form onSubmit={handleSubmit}>
-          <input type="text" onChange={handleUsername} value={username} />
-          <input type="email" onChange={handleEmail} value={email} />
-          <input type="password" onChange={handlePassword} value={password} />
+          <input
+            type="text"
+            onChange={handleUsername}
+            value={username}
+            placeholder="Pseudo"
+          />
+          <input
+            type="email"
+            onChange={handleEmail}
+            value={email}
+            placeholder="Adresse e-mail"
+          />
+          <input
+            type="password"
+            onChange={handlePassword}
+            value={password}
+            placeholder="Password"
+          />
           <input type="submit" value="S'inscrire" />
         </form>
         <p>{error}</p>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 
