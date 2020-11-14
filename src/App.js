@@ -15,8 +15,9 @@ import {
   faTimes,
   faStar,
   faChevronRight,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
-library.add(faSearch, faTimes, faStar, faChevronRight);
+library.add(faSearch, faTimes, faStar, faChevronRight, faBars);
 
 function App() {
   const [token, setToken] = useState(Cookies.get("tokenUser") || null);

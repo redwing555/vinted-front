@@ -6,7 +6,8 @@
   margin-top: 60px;
 }
 
-.hero-banner h1 {
+.hero-banner h1,
+.mobile-description h1 {
   font-size: 34px;
   line-height: 42.5px;
   color: #111111;
@@ -17,7 +18,8 @@
   font-family: "Maison Neue Bold", sans-serif;
 }
 
-.hero-banner p {
+.hero-banner p,
+.mobile-description p {
   color: #09aeb8;
   font-size: 14px;
   margin-right: 50px;
@@ -49,7 +51,12 @@
   object-fit: cover;
 }
 
-.hero-banner button {
+.mobile-description {
+  display: none;
+}
+
+.hero-banner button,
+.mobile-description button {
   font-size: 16px;
   line-height: 22px;
   background-color: #09aeb8;
@@ -61,6 +68,12 @@
   margin-left: 40px;
   margin-top: 30px;
   cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  .hero-banner > div:nth-child(2) {
+    left: 5%;
+  }
 }
 
 @media (max-width: 720px) {
@@ -75,5 +88,35 @@
 
   .hero-banner img {
     height: 10%;
+  }
+
+  .mobile-description {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+  }
+
+  .mobile-description h1 {
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    margin-right: 0;
+    margin-left: 0px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .mobile-description p {
+    margin-right: 0px;
+    margin-top: 15px;
+    margin-left: 0px;
+    text-align: center;
+  }
+
+  .mobile-description button {
+    margin-left: 0px;
+    margin-top: 20px;
   }
 }

@@ -15,14 +15,13 @@
 
 .offer-product > div:first-child {
   width: 1000px;
-  display: flex;
   flex-wrap: wrap;
 }
 
 .offer-product .one-picture img {
   margin-right: 5px;
   margin-bottom: 5px;
-  width: 924px;
+  width: 462px;
   height: 624px;
   object-fit: cover;
   border-radius: 5px;
@@ -37,7 +36,7 @@
 
 .offer-product .some-pictures img {
   margin-right: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   width: 462px;
   height: 624px;
   object-fit: cover;
@@ -169,8 +168,9 @@
 
   .offer-product > div:first-child {
     width: 90%;
+    display: flex;
     flex-wrap: nowrap;
-    overflow: hidden;
+    overflow-x: scroll;
     margin: auto;
   }
 
@@ -179,33 +179,22 @@
     height: auto;
   }
 
-  .offer-product > div:not(:first-child) {
+  .offer-product > div:last-child {
     display: flex;
     width: 90%;
     flex-direction: column;
-    margin-left: -40px;
     margin-top: 0px;
     justify-content: center;
+    margin: auto;
+    align-items: center;
   }
 
   .offer-product > div > div:nth-child(3) {
-    width: 100%;
-    margin: auto;
-  }
-
-  .offer {
     width: 90%;
-    margin: 0 0;
+    margin: auto;
   }
 
   .offer-product .cgv {
     margin-left: 0px;
-  }
-}
-
-@media (max-width: 620px) {
-  .offer-product .some-pictures img {
-    width: 85%;
-    height: auto;
   }
 }

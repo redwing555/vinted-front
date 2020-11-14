@@ -43,6 +43,7 @@ const Header = ({ setUser, token, setModalLogin }) => {
               <button>Vends tes articles</button>
             </Link>
           </div>
+          <FontAwesomeIcon className="menu-mobile" icon="bars" />
         </div>
       </header>
     </>

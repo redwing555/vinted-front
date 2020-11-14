@@ -17,8 +17,8 @@ const index = ({ offer }) => {
             })}
           </div>
         )}
-        <div className="offer">
-          <div>
+        <div>
+          <div className="offer">
             <p> {offer.product_price} €</p>
 
             <hr />
