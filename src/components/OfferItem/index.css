@@ -3,49 +3,91 @@
 .offer-section {
   background-color: #ebedee;
   display: flex;
-  height: 100%;
-
-  padding-bottom: 80px;
 }
 
 .offer-product {
   display: flex;
   margin: auto;
   margin-top: 90px;
-  align-items: flex-start;
-  padding-bottom: 150px;
+  justify-content: center;
+  padding-bottom: 75px;
 }
 
 .offer-product > div:first-child {
-  flex: 3;
+  width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.offer-product > div:last-child {
-  flex: 1;
+.offer-product .one-picture img {
+  margin-right: 5px;
+  margin-bottom: 5px;
+  width: 924px;
+  height: 624px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
-.offer-product > div:first-child img {
-  margin-right: 80px;
+.offer-product > div:not(:first-child) {
+  display: flex;
+  flex-direction: column;
+  margin-left: -80px;
+  margin-top: -30px;
+}
+
+.offer-product .some-pictures img {
+  margin-right: 5px;
+  margin-bottom: 5px;
   width: 462px;
   height: 624px;
   object-fit: cover;
+  border-radius: 5px;
 }
 
 .offer-product > div:last-child {
-  background-color: #fff;
-  width: 295px;
+  width: 310px;
   padding: 30px 30px;
   box-sizing: border-box;
 }
 
-.offer-product .user-description p:first-child {
+.offer-product > div > div:first-child {
+  margin-bottom: 20px;
+}
+
+.offer-product > div > div:first-child,
+.offer-product > div > div:nth-child(2) {
+  background-color: #fff;
+  box-shadow: 0 22px 24px 0 rgba(46, 51, 51, 0.03);
+
+  width: 100%;
+  padding: 20px;
+}
+
+.offer-product > div > div:nth-child(3) {
+  width: 115%;
+}
+
+.offer-product > div > div:first-child > p:first-child {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.offer-product .cgv {
+  color: #999999;
+  line-height: 18px;
+  font-size: 14px;
+  margin-left: 10px;
+  margin-top: 30px;
+}
+
+.offer-product .product-description p:first-child {
   color: #111111;
   overflow-wrap: break-word;
   margin-top: 15px;
   font-family: "Maison Neue Bold";
 }
 
-.offer-product .user-description p:last-child {
+.offer-product .product-description p:last-child {
   overflow-wrap: break-word;
   margin-top: 12px;
   font-size: 16px;
@@ -53,15 +95,27 @@
   color: #666666;
 }
 
+.offer-product .user-description {
+  display: flex;
+  align-items: center;
+  overflow-wrap: break-word;
+  font-size: 14px;
+
+  position: relative;
+}
+
+.offer-product .user-description img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
 .offer-description {
   display: flex;
   justify-content: space-between;
-}
-
-.offer-product > div:nth-child(2) > p:first-child {
-  font-size: 24px;
-  line-height: 32px;
-  margin-bottom: 10px;
+  position: relative;
 }
 
 .offer-description > p:first-child {
@@ -86,7 +140,72 @@
   cursor: pointer;
   display: flex;
   margin: auto;
-  width: 90%;
+  width: 100%;
   justify-content: center;
   margin-top: 20px;
+}
+
+.user-description .rating {
+  display: flex;
+  color: #f7c60e;
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+.user-description > svg {
+  position: absolute;
+  top: 45%;
+  right: 20px;
+  color: #bbbbbb;
+}
+.user-description .rating > svg {
+  margin-right: 3px;
+}
+
+@media (max-width: 1260px) {
+  .offer-product {
+    flex-wrap: wrap;
+  }
+
+  .offer-product > div:first-child {
+    width: 90%;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    margin: auto;
+  }
+
+  .offer-product .some-pictures img {
+    width: 45%;
+    height: auto;
+  }
+
+  .offer-product > div:not(:first-child) {
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    margin-left: -40px;
+    margin-top: 0px;
+    justify-content: center;
+  }
+
+  .offer-product > div > div:nth-child(3) {
+    width: 100%;
+    margin: auto;
+  }
+
+  .offer {
+    width: 90%;
+    margin: 0 0;
+  }
+
+  .offer-product .cgv {
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 620px) {
+  .offer-product .some-pictures img {
+    width: 85%;
+    height: auto;
+  }
 }

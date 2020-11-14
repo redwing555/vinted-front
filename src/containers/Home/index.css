@@ -1,0 +1,15 @@
+.pages {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  margin-top: -10px;
+}
+
+.pages span:not(:last-child) {
+  margin-right: 30px;
+}
+
+.pages span {
+  cursor: pointer;
+  color: #111111;
+}

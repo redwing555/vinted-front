@@ -60,3 +60,21 @@ main a {
   height: 355px;
   object-fit: cover;
 }
+
+@media (max-width: 720px) {
+  .home-product-item img:nth-child(2) {
+    width: 200px;
+    height: 320px;
+  }
+
+  .home-product-item {
+    flex: 40%;
+  }
+}
+
+@media (max-width: 420px) {
+  .home-product-item img:nth-child(2) {
+    width: 120px;
+    height: 220px;
+  }
+}

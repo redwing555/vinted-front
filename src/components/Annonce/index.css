@@ -1,0 +1,18 @@
+.publish-section {
+  background-color: #ebedee;
+  height: 100vh;
+}
+
+fieldset {
+  background-color: #fff;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.publish-section > div:first-child {
+  margin-top: 200px;
+  width: 60%;
+  margin: 100px auto;
+}

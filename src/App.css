@@ -11,8 +11,11 @@ body {
   align-items: center;
 }
 hr {
+  display: block;
   height: 1px;
-  color: #09aeb8;
+  border: 0;
+  border-top: 1px solid rgb(237, 237, 237);
+  padding: 0;
 }
 
 input::placeholder {

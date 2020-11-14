@@ -62,3 +62,18 @@
   margin-top: 30px;
   cursor: pointer;
 }
+
+@media (max-width: 720px) {
+  .hero-banner div:nth-child(2) {
+    display: none;
+  }
+
+  .hero-banner > div:nth-child(3) img {
+    left: 0%;
+    width: 100%;
+  }
+
+  .hero-banner img {
+    height: 10%;
+  }
+}

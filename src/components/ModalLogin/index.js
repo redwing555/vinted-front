@@ -11,10 +11,12 @@ const ModalLogin = ({ setUser, setModalLogin, setModalSignUp }) => {
   const handleSignUp = () => {
     setModalLogin(false);
     setModalSignUp(true);
+    document.body.style.overflow = "hidden";
   };
 
   const handleClick = () => {
     setModalLogin(false);
+    document.body.style.overflow = "";
   };
 
   const handleEmail = (ev) => {
@@ -43,6 +45,7 @@ const ModalLogin = ({ setUser, setModalLogin, setModalSignUp }) => {
         const token = response.data.token;
         setUser(token);
         setModalLogin(false);
+        document.body.style.overflow = "";
       }
     } catch (error) {
       setError(error.response.data.message || error.response.data.error);

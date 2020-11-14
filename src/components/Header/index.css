@@ -17,7 +17,8 @@ header {
 }
 
 header input {
-  width: 580px;
+  /* width: 580px; */
+  width: 350%;
   height: 20px;
   background-color: #f3f5f5;
   border: none;
@@ -66,6 +67,13 @@ header .logout {
   margin-right: 10px;
 }
 
+header .logout {
+  background-color: #c2175b;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+}
+
 header button {
   border: none;
   background-color: #09aeb8;
@@ -74,4 +82,10 @@ header button {
   padding: 7px 15px;
   outline: none;
   cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .input-header {
+    display: none;
+  }
 }

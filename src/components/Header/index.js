@@ -9,6 +9,7 @@ import Logo from "../../assets/img/vinted.png";
 const Header = ({ setUser, token, setModalLogin }) => {
   const handleLogin = () => {
     setModalLogin(true);
+    document.body.style.overflow = "hidden";
   };
 
   const handleClick = () => {
@@ -38,7 +39,9 @@ const Header = ({ setUser, token, setModalLogin }) => {
               </div>
             )}
 
-            <button>Vends tes articles</button>
+            <Link to="/publish">
+              <button>Vends tes articles</button>
+            </Link>
           </div>
         </div>
       </header>
