@@ -5,12 +5,16 @@ import Loader from "react-loader-spinner";
 import axios from "axios";
 import "./index.css";
 
-const Home = () => {
-  const limit = 10;
-  const [offers, setOffers] = useState([]);
+const Home = ({
+  offers,
+  setOffers,
+  page,
+  setPage,
+  limit,
+  pageMax,
+  setPageMax,
+}) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(1);
-  const [pageMax, setPageMax] = useState(0);
 
   const renderPages = () => {
     const tab = [];
@@ -54,8 +58,8 @@ const Home = () => {
         color="#09aeb8"
         height={100}
         width={100}
-        timeout={3000} //3 secs
-      />{" "}
+        timeout={3000}
+      />
     </div>
   ) : (
     <>

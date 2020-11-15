@@ -122,6 +122,7 @@
 }
 .offer-description > p:last-child {
   color: #666666;
+  text-align: right;
 }
 
 .offer-description > p {
@@ -161,27 +162,37 @@
   margin-right: 3px;
 }
 
+/* RESPONSIVE DESIGN */
+
 @media (max-width: 1260px) {
   .offer-product {
     flex-wrap: wrap;
   }
 
   .offer-product > div:first-child {
-    width: 90%;
+    width: 98%;
     display: flex;
     flex-wrap: nowrap;
+    overflow: hidden;
     overflow-x: scroll;
     margin: auto;
   }
 
+  .offer-product > div:first-child::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
   .offer-product .some-pictures img {
-    width: 45%;
-    height: auto;
+    width: 50%;
+    height: 400px;
+    object-fit: cover;
   }
 
   .offer-product > div:last-child {
     display: flex;
-    width: 90%;
+    width: 100%;
     flex-direction: column;
     margin-top: 0px;
     justify-content: center;
@@ -190,7 +201,7 @@
   }
 
   .offer-product > div > div:nth-child(3) {
-    width: 90%;
+    width: 100%;
     margin: auto;
   }
 

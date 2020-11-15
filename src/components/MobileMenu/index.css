@@ -1,0 +1,64 @@
+/* RESPONSIVE DESIGN  */
+
+@media (max-width: 1000px) {
+  .mobile-menu {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    top: 0px;
+    height: 100%;
+    width: 100vw;
+    z-index: 20;
+    background-color: #fff;
+    padding-top: 100px;
+  }
+
+  .mobile-menu a {
+    text-decoration: none;
+  }
+
+  .mobile-menu .container {
+    width: 90%;
+  }
+
+  .login-signup,
+  .logout {
+    border: 1px solid #09aeb8;
+    background-color: white;
+    color: #09aeb8;
+    font-size: 13px;
+    border-radius: 5px;
+    padding: 7px 15px;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .logout {
+    background-color: #c2175b;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+  }
+
+  .mobile-menu button {
+    border: none;
+    background-color: #09aeb8;
+    color: #fff;
+    border-radius: 5px;
+    padding: 7px 15px;
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .mobile-menu svg {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+  }
+}

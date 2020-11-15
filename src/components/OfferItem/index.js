@@ -2,18 +2,18 @@ import React from "react";
 import "./index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const index = ({ offer }) => {
+const OfferItem = ({ offer }) => {
   return (
     <>
       <div className="offer-product">
         {offer.product_pictures.length === 1 ? (
           <div className="one-picture">
-            <img src={offer.product_pictures[0].url} alt="image-item" />
+            <img src={offer.product_pictures[0].url} alt="" />
           </div>
         ) : (
           <div className="some-pictures">
             {offer.product_pictures.map((picture, index) => {
-              return <img key={index} src={picture.url} alt="image-item" />;
+              return <img key={index} src={picture.url} alt="" />;
             })}
           </div>
         )}
@@ -23,34 +23,16 @@ const index = ({ offer }) => {
 
             <hr />
 
-            <div className="offer-description">
-              <p>MARQUE</p>
-              <p>{offer.product_details[0].MARQUE}</p>
-            </div>
-            {offer.product_details[1].TAILLE && (
-              <div className="offer-description">
-                <p>TAILLE</p>
-                <p>{offer.product_details[1].TAILLE}</p>
-              </div>
-            )}
-            {offer.product_details[2].ÉTAT && (
-              <div className="offer-description">
-                <p>ÉTAT</p>
-                <p>{offer.product_details[2].ÉTAT}</p>
-              </div>
-            )}
-            {offer.product_details[3].COULEUR && (
-              <div className="offer-description">
-                <p>COULEUR</p>
-                <p>{offer.product_details[3].COULEUR}</p>
-              </div>
-            )}
-            {offer.product_details[4] && (
-              <div className="offer-description">
-                <p>EMPLACEMENT</p>
-                <p>{offer.product_details[4].EMPLACEMENT}</p>
-              </div>
-            )}
+            {offer.product_details.map((item, index) => {
+              const keys = Object.keys(item);
+
+              return (
+                <div key={index} className="offer-description">
+                  <p>{keys[0]}</p>
+                  <p>{item[keys[0]]}</p>
+                </div>
+              );
+            })}
 
             <hr />
 
@@ -96,4 +78,4 @@ const index = ({ offer }) => {
   );
 };
 
-export default index;
+export default OfferItem;

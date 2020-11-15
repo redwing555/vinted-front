@@ -1,20 +1,33 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Logo from "../../assets/img/vinted.png";
+import SearchBar from "../SearchBar";
 
-const Header = ({ setUser, token, setModalLogin }) => {
-  const handleLogin = () => {
-    setModalLogin(true);
-    document.body.style.overflow = "hidden";
+const Header = ({
+  setUser,
+  token,
+  setMobileMenu,
+  mobileMenu,
+  setOffers,
+  page,
+  limit,
+  setPageMax,
+}) => {
+  const handleMobile = () => {
+    if (mobileMenu) {
+      setMobileMenu(false);
+    } else {
+      setMobileMenu(true);
+    }
   };
 
   const handleClick = () => {
     setUser(null);
   };
+
   return (
     <>
       <header>
@@ -23,10 +36,13 @@ const Header = ({ setUser, token, setModalLogin }) => {
             <Link to="/">
               <img src={Logo} alt="logo" />
             </Link>
-            <div className="input-header">
-              <input type="text" placeholder="Rechercher des articles" />
-              <FontAwesomeIcon icon="search" />
-            </div>
+
+            <SearchBar
+              setOffers={setOffers}
+              page={page}
+              limit={limit}
+              setPageMax={setPageMax}
+            />
           </div>
           <div>
             {token ? (
@@ -34,16 +50,20 @@ const Header = ({ setUser, token, setModalLogin }) => {
                 Déconnexion
               </div>
             ) : (
-              <div className="login-signup" onClick={handleLogin}>
+              <Link to="/login" className="login-signup">
                 S'inscrire | Se Connecter
-              </div>
+              </Link>
             )}
 
             <Link to="/publish">
               <button>Vends tes articles</button>
             </Link>
           </div>
-          <FontAwesomeIcon className="menu-mobile" icon="bars" />
+          <FontAwesomeIcon
+            onClick={handleMobile}
+            className="menu-mobile"
+            icon={mobileMenu ? "times" : "bars"}
+          />
         </div>
       </header>
     </>

@@ -1,23 +1,12 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./index.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const ModalLogin = ({ setUser, setModalLogin, setModalSignUp }) => {
+const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  const handleSignUp = () => {
-    setModalLogin(false);
-    setModalSignUp(true);
-    document.body.style.overflow = "hidden";
-  };
-
-  const handleClick = () => {
-    setModalLogin(false);
-    document.body.style.overflow = "";
-  };
 
   const handleEmail = (ev) => {
     setEmail(ev.target.value);
@@ -44,8 +33,6 @@ const ModalLogin = ({ setUser, setModalLogin, setModalSignUp }) => {
       if (response.status === 200) {
         const token = response.data.token;
         setUser(token);
-        setModalLogin(false);
-        document.body.style.overflow = "";
       }
     } catch (error) {
       setError(error.response.data.message || error.response.data.error);
@@ -77,15 +64,14 @@ const ModalLogin = ({ setUser, setModalLogin, setModalSignUp }) => {
             <p className="error-message">{error}</p>
           </div>
           <div>
-            <p className="signup-text" onClick={handleSignUp}>
+            <Link className="signup-text" to="/signup">
               Pas de compte ? Cliquez ici pour vous inscrire
-            </p>
+            </Link>
           </div>
-          <FontAwesomeIcon onClick={handleClick} icon="times" />
         </div>
       </section>
     </>
   );
 };
 
-export default ModalLogin;
+export default Login;

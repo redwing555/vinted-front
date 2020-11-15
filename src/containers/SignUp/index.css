@@ -9,13 +9,8 @@ MODAL - FORM
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: fixed;
-  top: 0px;
-  height: 100vh;
-  width: 100vw;
-  z-index: 100;
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: white;
+  margin-top: 100px;
 }
 
 .login-form .container {
@@ -24,16 +19,14 @@ MODAL - FORM
   align-items: center;
   flex-direction: column;
   position: relative;
-  width: 350px;
+  width: 90%;
   background-color: #fff;
-  height: 350px;
   border-radius: 4px;
   padding: 50px 0 70px 0;
-  box-shadow: 0 22px 24px 0 rgba(46, 51, 51, 0.07);
 }
 
 .login-form .container > div {
-  width: 60%;
+  width: 90%;
 }
 
 .login-form h2 {
@@ -42,7 +35,7 @@ MODAL - FORM
   font-family: "Maison Neue Bold";
   font-size: 24px;
   line-height: 32px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .login-form form {
@@ -50,7 +43,7 @@ MODAL - FORM
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 65%;
+  width: 290px;
 
   background-color: white;
 }

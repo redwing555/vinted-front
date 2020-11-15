@@ -1,19 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./index.css";
-const ModalSignUp = ({ setUser, setModalSignUp }) => {
+const SignUp = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
 
   const [error, setError] = useState("");
-
-  const handleClick = () => {
-    setModalSignUp(false);
-    document.body.style.overflow = "";
-  };
 
   const handleEmail = (ev) => {
     setEmail(ev.target.value);
@@ -49,8 +43,6 @@ const ModalSignUp = ({ setUser, setModalSignUp }) => {
       if (response.status === 200) {
         const token = response.data.token;
         setUser(token);
-        setModalSignUp(false);
-        document.body.style.overflow = "";
       }
     } catch (error) {
       setError(error.response.data.message || error.response.data.error);
@@ -90,16 +82,21 @@ const ModalSignUp = ({ setUser, setModalSignUp }) => {
               value={password}
               placeholder="Mot de passe"
             />
+            <input type="checkbox" value="S'inscrire à notre newsletter" />
+            <p className="cgu">
+              En m'inscrivant je confirme avoir lu et accepté les Termes &
+              Conditions et Politique de Confidentialité de Vinted. Je confirme
+              avoir au moins 18 ans.
+            </p>
             <input type="submit" value="Se connecter" />
           </form>
           <div>
             <p className="error-message">{error}</p>
           </div>
-          <FontAwesomeIcon onClick={handleClick} icon="times" />
         </div>
       </section>
     </>
   );
 };
 
-export default ModalSignUp;
+export default SignUp;

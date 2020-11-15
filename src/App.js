@@ -5,9 +5,9 @@ import Header from "./components/Header";
 import Home from "./containers/Home/index";
 import Offer from "./containers/Offer/index";
 import Publish from "./containers/Publish/index";
+import Login from "./containers/Login/index";
+import SignUp from "./containers/SignUp/index";
 import Cookies from "js-cookie";
-import ModalLogin from "./components/ModalLogin/index";
-import ModalSignUp from "./components/ModalSignUp/index";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -17,12 +17,16 @@ import {
   faChevronRight,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
+import MobileMenu from "./components/MobileMenu";
 library.add(faSearch, faTimes, faStar, faChevronRight, faBars);
 
 function App() {
   const [token, setToken] = useState(Cookies.get("tokenUser") || null);
-  const [modalLogin, setModalLogin] = useState(false);
-  const [modalSignUp, setModalSignUp] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const [offers, setOffers] = useState([]);
+  const limit = 10;
+  const [page, setPage] = useState(1);
+  const [pageMax, setPageMax] = useState(0);
 
   const setUser = (tokenToSet) => {
     if (tokenToSet) {
@@ -36,29 +40,50 @@ function App() {
 
   return (
     <Router>
-      {modalLogin === true && (
-        <ModalLogin
+      <Header
+        setUser={setUser}
+        token={token}
+        setMobileMenu={setMobileMenu}
+        mobileMenu={mobileMenu}
+        setOffers={setOffers}
+        page={page}
+        setPage={setPage}
+        setPageMax={setPageMax}
+        pageMax={pageMax}
+        limit={limit}
+      />
+
+      {mobileMenu === true && (
+        <MobileMenu
+          token={token}
+          setMobileMenu={setMobileMenu}
           setUser={setUser}
-          setModalLogin={setModalLogin}
-          setModalSignUp={setModalSignUp}
         />
       )}
-
-      {modalSignUp === true && (
-        <ModalSignUp setUser={setUser} setModalSignUp={setModalSignUp} />
-      )}
-
-      <Header setUser={setUser} token={token} setModalLogin={setModalLogin} />
 
       <Switch>
         <Route path="/offer/:id">
           <Offer />
         </Route>
+        <Route path="/signup">
+          <SignUp />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
         <Route path="/publish">
           <Publish />
         </Route>
         <Route path="/">
-          <Home />
+          <Home
+            offers={offers}
+            setOffers={setOffers}
+            page={page}
+            setPage={setPage}
+            setPageMax={setPageMax}
+            pageMax={pageMax}
+            limit={limit}
+          />
         </Route>
       </Switch>
     </Router>

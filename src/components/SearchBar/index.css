@@ -1,0 +1,76 @@
+header input {
+  width: 100%;
+  height: 20px;
+  background-color: #f3f5f5;
+  border: none;
+  color: #999999;
+  padding: 9px 50px;
+  outline: none;
+  border-radius: 0 4px 4px 0;
+  font-size: 16px;
+  border-left: 1px solid #c7c7c7;
+}
+
+.input-header {
+  display: flex;
+  background-color: #f3f5f5;
+}
+
+.input-header select {
+  outline: none;
+  border: none;
+  background-color: #f3f5f5;
+  border-radius: 4px 0 0 4px;
+  color: #999999;
+  font-family: inherit;
+  padding: 0 10px 0 10px;
+  margin-right: 10px;
+}
+
+.input-header svg {
+  margin-left: -100px;
+}
+.input-header svg {
+  position: absolute;
+  left: 0px;
+  color: #c7c7c7;
+  margin-left: 20px;
+}
+
+.input-header fieldset {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 540px;
+  background-color: #f3f5f5;
+}
+
+@media (max-width: 1200px) {
+  .input-header {
+    width: 430px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .input-header {
+    display: none;
+  }
+
+  header .login-signup,
+  header .logout {
+    display: none;
+  }
+
+  header button {
+    display: none;
+  }
+
+  header .menu-mobile {
+    display: block;
+    position: absolute;
+    right: 5%;
+    font-size: 26px;
+    color: #c7c7c7;
+    top: 25%;
+  }
+}

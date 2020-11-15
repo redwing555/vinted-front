@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 
-const ClothingItem = ({ offers }) => {
+const HomeItem = ({ offers }) => {
   return offers.map((item, index) => {
     const offerId = item._id;
     return (
@@ -24,4 +24,4 @@ const ClothingItem = ({ offers }) => {
   });
 };
 
-export default ClothingItem;
+export default HomeItem;
