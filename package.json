@@ -13,6 +13,7 @@
     "js-cookie": "^2.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-dropzone": "^11.2.4",
     "react-loader-spinner": "^3.1.14",
     "react-responsive-carousel": "^3.2.10",
     "react-router-dom": "^5.2.0",

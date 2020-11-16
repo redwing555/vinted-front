@@ -1,0 +1,89 @@
+.publish-section {
+  background-color: #ebedee;
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+.publish-section > div {
+  width: 90%;
+  max-width: 1100px;
+}
+
+.publish-section h2 {
+  font-size: 24px;
+  line-height: 20px;
+  margin-bottom: 20px;
+}
+
+.publish-section fieldset {
+  background-color: #fff;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 0 10px 10px 0 rgba(46, 51, 51, 0.03);
+}
+
+.publish-section fieldset:first-child {
+  height: 200px;
+}
+
+.publish-section h3 {
+  font-size: 14px;
+  color: #999999;
+}
+
+.publish-section .files {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border: 1px dashed #e2e2e2;
+}
+
+.publish-section fieldset > div {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.publish-section fieldset > div > input {
+  font-size: 16px;
+  outline: none;
+}
+
+.publish-section fieldset > div > input:focus {
+  font-size: 16px;
+  outline: none;
+  border-bottom: 1px solid #09aeb8;
+}
+
+.publish-section fieldset > div:not(:last-child) {
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.publish-section > div:first-child {
+  width: 60%;
+  margin: auto;
+}
+
+.publish-section input {
+  border: none;
+  border-bottom: 1px solid #e2e2e2;
+  font-family: inherit;
+  width: 50%;
+}
+
+.publish-section input[type="submit"] {
+  border: none;
+  background-color: #09aeb8;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  margin: auto;
+  justify-content: flex-end;
+  margin-top: 20px;
+}

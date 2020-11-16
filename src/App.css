@@ -11,7 +11,7 @@ body {
   align-items: center;
 }
 
-hr {
+.offer-section hr {
   display: block;
   height: 1px;
   border: 0;

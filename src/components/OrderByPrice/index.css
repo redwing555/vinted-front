@@ -1,0 +1,12 @@
+.orderByPrice {
+  width: 90%;
+  display: flex;
+  max-width: 1400px;
+  margin-bottom: 20px;
+  justify-content: flex-end;
+}
+
+.orderByPrice select {
+  border: none;
+  outline: none;
+}

@@ -6,16 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "../../assets/img/vinted.png";
 import SearchBar from "../SearchBar";
 
-const Header = ({
-  setUser,
-  token,
-  setMobileMenu,
-  mobileMenu,
-  setOffers,
-  page,
-  limit,
-  setPageMax,
-}) => {
+const Header = ({ setUser, token, setMobileMenu, mobileMenu, setFilter }) => {
   const handleMobile = () => {
     if (mobileMenu) {
       setMobileMenu(false);
@@ -37,12 +28,7 @@ const Header = ({
               <img src={Logo} alt="logo" />
             </Link>
 
-            <SearchBar
-              setOffers={setOffers}
-              page={page}
-              limit={limit}
-              setPageMax={setPageMax}
-            />
+            <SearchBar setFilter={setFilter} />
           </div>
           <div>
             {token ? (
@@ -55,7 +41,7 @@ const Header = ({
               </Link>
             )}
 
-            <Link to={token ? "/publish" : "/login"}>
+            <Link to={"/publish"}>
               <button>Vends tes articles</button>
             </Link>
           </div>

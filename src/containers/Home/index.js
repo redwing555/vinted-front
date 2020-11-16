@@ -1,24 +1,30 @@
 import React, { useState, useEffect } from "react";
 import ClothingItem from "../../components/HomeItem";
+import OrderByPrice from "../../components/OrderByPrice";
 import HeroBanner from "../../components/HeroBanner/index";
 import Loader from "react-loader-spinner";
 import axios from "axios";
 import "./index.css";
 
-const Home = ({
-  offers,
-  setOffers,
-  page,
-  setPage,
-  limit,
-  pageMax,
-  setPageMax,
-}) => {
+const Home = ({ offers, setOffers, apiUrl, filter }) => {
   const [isLoading, setIsLoading] = useState(true);
 
-  const renderPages = () => {
-    const tab = [];
+  // Nombre d'offres maximum par page
+  const limit = 10;
 
+  // State qui permet de donner le numéro de la page dynamiquement
+  const [page, setPage] = useState(1);
+
+  // State qui permet de calculer le nombre de page maximum
+  const [pageMax, setPageMax] = useState(0);
+
+  // State qui permet de trier par prix
+  const [sort, setSort] = useState("");
+
+  const tab = [];
+
+  // Méthode qui permet d'afficher le nombre de pages dynamiquement
+  const renderPages = () => {
     for (let i = 1; i <= pageMax; i++) {
       tab.push(
         <span
@@ -37,7 +43,7 @@ const Home = ({
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=${limit}`
+          `${apiUrl}/offers?page=${page}&limit=${limit}&sort=${sort}&title=${filter}`
         );
         setOffers(response.data.offers);
         setPageMax(Math.ceil(Number(response.data.count) / limit));
@@ -49,7 +55,7 @@ const Home = ({
     };
 
     fetchData();
-  }, [page]);
+  }, [page, sort, filter]);
 
   return (
     <>
@@ -63,10 +69,15 @@ const Home = ({
             width={100}
             timeout={99999}
           />
-        </div>
+        </div> ? (
+          !setOffers
+        ) : (
+          <p>Aucun résultat ne correspond à la recherche</p>
+        )
       ) : (
         <>
           <main>
+            <OrderByPrice setSort={setSort} />
             <ClothingItem offers={offers} />
           </main>
           <div className="pages">{renderPages()}</div>
