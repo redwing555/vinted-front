@@ -4,7 +4,7 @@
   padding-bottom: 50px;
 }
 .publish-section > div {
-  width: 90%;
+  width: 100%;
   max-width: 1100px;
 }
 
@@ -19,12 +19,13 @@
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
   box-shadow: 0 10px 10px 0 rgba(46, 51, 51, 0.03);
 }
 
 .publish-section fieldset:first-child {
-  height: 200px;
+  height: 170px;
+  padding: 30px;
+  position: relative;
 }
 
 .publish-section h3 {
@@ -32,22 +33,43 @@
   color: #999999;
 }
 
-.publish-section .files-section {
+.dropzoneStyle {
+  outline: none;
+  cursor: pointer;
+  border: 1px dashed #eeeeee;
+  position: absolute;
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
-  border: 1px dashed #e2e2e2;
-}
+  flex-direction: column;
+  height: 150px;
+  left: 0px;
+  top: 60px;
+  width: 95%;
+  margin-left: 22px;
+  margin-right: 22px;
 
-.dragndrop {
-  padding: 40px;
+  color: #999999;
+}
+.publish-section svg {
+  color: #eeeeee;
+  font-size: 42px;
+  margin: auto;
+  display: flex;
+  justify-self: center;
+  margin-bottom: 20px;
+  margin-top: 15px;
 }
 
 .publish-section fieldset > div {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 20px;
+  padding: 10px 40px 40px 40px;
+}
+
+.publish-section fieldset > div:first-child {
+  padding: 35px 40px 40px 40px;
 }
 
 .publish-section fieldset > div > input {
@@ -62,19 +84,24 @@
 }
 
 .publish-section fieldset > div:not(:last-child) {
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px solid #eeeeee;
 }
 
 .publish-section > div:first-child {
-  width: 60%;
+  width: 63%;
   margin: auto;
 }
 
-.publish-section input {
+.publish-section input[type="text"] {
   border: none;
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 4px;
   font-family: inherit;
   width: 50%;
+}
+
+.publish-section .input-price {
+  border: none !important;
 }
 
 .publish-section input[type="submit"] {
@@ -82,12 +109,70 @@
   background-color: #09aeb8;
   color: #fff;
   border-radius: 5px;
-  padding: 10px 0;
+  padding: 13px 17px;
   outline: none;
   cursor: pointer;
   font-size: 16px;
+  margin-top: 40px;
+}
+
+.publish-section input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 1px solid #999;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.publish-section .exchange {
+  font-size: 16px;
+  color: #666666;
   display: flex;
-  margin: auto;
+  align-items: center;
+  justify-content: center;
+  margin-left: 300px;
+  margin-top: 10px;
+}
+
+.publish-section .exchange > div {
+  display: flex;
+  align-items: center;
   justify-content: flex-end;
-  margin-top: 20px;
+}
+
+.publish-section .submit-form {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.publish-section textarea {
+  overflow: hidden;
+  overflow-wrap: break-word;
+  height: 80px;
+  resize: none;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: inherit;
+  border: none;
+  border-bottom: 1px solid #eeeeee;
+  width: 50%;
+  outline: none;
+}
+
+.publish-section textarea::placeholder {
+  color: #c7c7c7;
+}
+
+.publish-section textarea:focus {
+  border-bottom: 1px solid #09aeb8;
+}
+
+.publish-section .cgu {
+  font-size: 12px;
+  color: #999999;
 }

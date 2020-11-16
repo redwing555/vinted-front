@@ -9,4 +9,11 @@
 .orderByPrice select {
   border: none;
   outline: none;
+  font-family: inherit;
+}
+
+@media (max-width: 720px) {
+  .orderByPrice {
+    margin-top: 50px;
+  }
 }

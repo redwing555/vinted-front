@@ -5,12 +5,13 @@ import HeroBanner from "../../components/HeroBanner/index";
 import Loader from "react-loader-spinner";
 import axios from "axios";
 import "./index.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Home = ({ offers, setOffers, apiUrl, filter }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   // Nombre d'offres maximum par page
-  const limit = 10;
+  const limit = 20;
 
   // State qui permet de donner le numéro de la page dynamiquement
   const [page, setPage] = useState(1);
@@ -43,7 +44,7 @@ const Home = ({ offers, setOffers, apiUrl, filter }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${apiUrl}/offers?page=${page}&limit=${limit}&sort=${sort}&title=${filter}`
+          `${apiUrl}/offers?page=${page}&limit=${limit}&sort=${sort}${filter}`
         );
         setOffers(response.data.offers);
         setPageMax(Math.ceil(Number(response.data.count) / limit));
@@ -55,7 +56,7 @@ const Home = ({ offers, setOffers, apiUrl, filter }) => {
     };
 
     fetchData();
-  }, [page, sort, filter]);
+  }, [page, sort, filter, apiUrl, setOffers]);
 
   return (
     <>

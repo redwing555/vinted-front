@@ -13,7 +13,7 @@ const OrderByPrice = ({ setSort }) => {
           setSelect(ev.target.value);
         }}
       >
-        <option value="">Trier par</option>
+        <option value="">Trier par prix</option>
         <option value="price-asc">Prix croissant</option>
         <option value="price-desc">Prix décroissant</option>
       </select>

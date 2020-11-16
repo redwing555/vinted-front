@@ -21,9 +21,22 @@ import {
   faStar,
   faChevronRight,
   faBars,
+  faCaretDown,
+  faUpload,
+  faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import MobileMenu from "./components/MobileMenu";
-library.add(faSearch, faTimes, faStar, faChevronRight, faBars);
+library.add(
+  faSearch,
+  faTimes,
+  faStar,
+  faChevronRight,
+  faBars,
+  faCaretDown,
+  faUpload,
+  faChevronRight,
+  faChevronLeft
+);
 
 function App() {
   const [token, setToken] = useState(Cookies.get("tokenUser") || null);
@@ -61,7 +74,7 @@ function App() {
         setFilter={setFilter}
       />
 
-      {mobileMenu === true && (
+      {mobileMenu && (
         <MobileMenu
           token={token}
           setMobileMenu={setMobileMenu}

@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./index.css";
+import { Link } from "react-router-dom";
 
 import Banner from "../../assets/img/banner.jpeg";
 import Tear from "../../assets/img/tear.svg";
@@ -12,7 +13,9 @@ const HeroBanner = () => {
         <img src={Banner} alt="" />
         <div>
           <h1>Prêts à faire du tri dans vos placards ?</h1>
-          <button>Commencer à vendre</button>
+          <Link to="/publish">
+            <button>Commencer à vendre</button>
+          </Link>
           <p>Découvrir comment ça marche</p>
         </div>
         <div>

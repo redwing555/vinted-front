@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 import "./index.css";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useHistory } from "react-router-dom";
 
 const Publish = ({ token }) => {
   let history = useHistory();
 
   const [title, setTitle] = useState("");
-  const [file, setFile] = useState({});
+  const [file, setFile] = useState([]);
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
   const [color, setColor] = useState("");
@@ -38,11 +39,8 @@ const Publish = ({ token }) => {
   const handleCity = (ev) => {
     setCity(ev.target.value);
   };
-  const handleFile = (ev) => {
-    setFile(ev.target.files[0]);
-  };
   const handlePrice = (ev) => {
-    setPrice(ev.target.value);
+    setPrice(Number(ev.target.value));
   };
 
   const handleSubmit = async (ev) => {
@@ -69,7 +67,7 @@ const Publish = ({ token }) => {
         }
       );
 
-      history.push(`offer/${response.data.id}`);
+      history.push(`offer/${response.data._id}`);
     } catch (error) {
       console.log(error.message);
     }
@@ -86,20 +84,22 @@ const Publish = ({ token }) => {
           <fieldset>
             <h3>Ajoute jusqu'à 5 photos</h3>
             <div className="files-section">
-              <Dropzone onDrop={(acceptedFiles) => setFile(acceptedFiles[0])}>
+              <Dropzone
+                multiple={true}
+                onDrop={(acceptedFiles) => setFile(acceptedFiles[0])}
+              >
                 {({ getRootProps, getInputProps }) => (
                   <section className="dragndrop">
                     <div className="dropzoneStyle" {...getRootProps()}>
-                      <input {...getInputProps()} />
+                      <input multiple {...getInputProps()} />
                       <div>{file.name}</div>
-                      <p>
-                        Faîtes glisser les fichiers que vous souhaitez envoyer
-                      </p>
+                      <FontAwesomeIcon icon="upload" />
+
+                      <p>Cliquez ou déposez vos fichiers</p>
                     </div>
                   </section>
                 )}
               </Dropzone>
-              {/* <input multiple={true} type="file" onChange={handleFile} /> */}
             </div>
           </fieldset>
           <fieldset>
@@ -107,7 +107,7 @@ const Publish = ({ token }) => {
               <label>Titre</label>
               <input
                 type="text"
-                placeholder="ex:Chemise Sézane verte"
+                placeholder="ex : Chemise Sézane verte"
                 onChange={handleTitle}
                 value={title}
               />
@@ -117,13 +117,11 @@ const Publish = ({ token }) => {
 
             <div>
               <label>Décris ton article</label>
-
-              <input
-                type="textarea"
-                placeholder="ex:porté quelquefois, taille correctement"
+              <textarea
+                placeholder="ex : porté quelquefois, taille correctement"
                 onChange={handleDescription}
                 value={description}
-              />
+              ></textarea>
             </div>
           </fieldset>
 
@@ -132,7 +130,7 @@ const Publish = ({ token }) => {
               <label>Marque</label>
               <input
                 type="text"
-                placeholder="ex:Chemise Sézane verte"
+                placeholder="ex : Zara"
                 onChange={handleBrand}
                 value={brand}
               />
@@ -143,7 +141,7 @@ const Publish = ({ token }) => {
               <label>Taille</label>
               <input
                 type="text"
-                placeholder="ex:Chemise Sézane verte"
+                placeholder="ex : L / 42 / 12"
                 onChange={handleSize}
                 value={size}
               />
@@ -155,7 +153,7 @@ const Publish = ({ token }) => {
               <label>Couleur</label>
               <input
                 type="text"
-                placeholder="ex:Chemise Sézane verte"
+                placeholder="ex : Fuchsia"
                 onChange={handleColor}
                 value={color}
               />
@@ -167,7 +165,7 @@ const Publish = ({ token }) => {
               <label>État</label>
               <input
                 type="text"
-                placeholder="ex:Chemise Sézane verte"
+                placeholder="Indique l'état de ton article"
                 onChange={handleCondition}
                 value={condition}
               />
@@ -179,7 +177,7 @@ const Publish = ({ token }) => {
               <label>Lieu</label>
               <input
                 type="text"
-                placeholder="ex:Chemise Sézane verte"
+                placeholder="ex : Paris"
                 onChange={handleCity}
                 value={city}
               />
@@ -187,27 +185,30 @@ const Publish = ({ token }) => {
           </fieldset>
 
           <fieldset>
-            <div>
+            <div className="input-price">
               <label>Prix</label>
               <input
                 type="text"
-                placeholder="ex:Chemise Sézane verte"
+                placeholder="0,00 €"
                 onChange={handlePrice}
                 value={price}
               />
             </div>
-
-            <input
-              type="checkbox"
-              value="je suis intéressé(e) par les échanges"
-            />
+            <div className="exchange">
+              <div>
+                <input type="checkbox" />
+                <p>Je suis intéressé(e) par les échanges</p>
+              </div>
+            </div>
           </fieldset>
-          <p>
+          <p className="cgu">
             Un vendeur professionnel se présentant comme un consommateur ou un
             non-professionnel sur Vinted encourt les sanctions prévues à
             l'article L 132-2 du code de la consommation.
           </p>
-          <input type="submit" value="Ajouter" />
+          <div className="submit-form">
+            <input type="submit" value="Ajouter" />
+          </div>
         </form>
       </div>
     </section>

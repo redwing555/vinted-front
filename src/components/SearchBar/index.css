@@ -1,37 +1,26 @@
-header input {
-  width: 100%;
-  height: 20px;
-  background-color: #f3f5f5;
-  border: none;
-  color: #999999;
-  padding: 9px 50px;
-  outline: none;
-  border-radius: 0 4px 4px 0;
-  font-size: 16px;
-  border-left: 1px solid #c7c7c7;
-}
-
 .input-header {
   display: flex;
   background-color: #f3f5f5;
   border-radius: 5px 0 0 5px;
 }
 
-.input-header select {
+.input-header .select {
   outline: none;
   border: none;
   background-color: #f3f5f5;
   border-radius: 4px 0 0 4px;
   color: #999999;
   font-family: inherit;
-  padding: 0 10px 0 10px;
+  padding: 0 21px 0 15px;
   margin-right: 10px;
+  position: relative;
+  cursor: pointer;
 }
 
-.input-header svg {
+.search-icon svg {
   margin-left: -100px;
 }
-.input-header svg {
+.search-icon svg {
   position: absolute;
   left: 0px;
   color: #c7c7c7;
@@ -44,6 +33,31 @@ header input {
   align-items: center;
   width: 540px;
   background-color: #f3f5f5;
+  border-left: 1px solid #e4e4e4;
+}
+
+.select > div:first-child {
+  padding: 1px;
+}
+
+.select > div:first-child svg {
+  position: absolute;
+  left: 50px;
+  top: 0%;
+  color: #999999;
+}
+
+.filter-price {
+  position: absolute;
+  background-color: white;
+  padding: 10px 20px 5px 20px;
+  left: 0px;
+  top: 30px;
+}
+
+.filter-price input {
+  width: 60px;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 1200px) {
