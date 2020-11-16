@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-// import Dropzone from "react-dropzone";
-// import { Redirect } from "react-router-dom";
+import Dropzone from "react-dropzone";
 import "./index.css";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Publish = ({ token }) => {
+  let history = useHistory();
+
   const [title, setTitle] = useState("");
   const [file, setFile] = useState({});
   const [description, setDescription] = useState("");
@@ -19,34 +20,27 @@ const Publish = ({ token }) => {
   const handleTitle = (ev) => {
     setTitle(ev.target.value);
   };
-
   const handleDescription = (ev) => {
     setDescription(ev.target.value);
   };
-
   const handleBrand = (ev) => {
     setBrand(ev.target.value);
   };
-
   const handleColor = (ev) => {
     setColor(ev.target.value);
   };
-
   const handleSize = (ev) => {
     setSize(ev.target.value);
   };
-
   const handleCondition = (ev) => {
     setCondition(ev.target.value);
   };
   const handleCity = (ev) => {
     setCity(ev.target.value);
   };
-
   const handleFile = (ev) => {
     setFile(ev.target.files[0]);
   };
-
   const handlePrice = (ev) => {
     setPrice(ev.target.value);
   };
@@ -70,14 +64,12 @@ const Publish = ({ token }) => {
         params,
         {
           headers: {
-            authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
 
-      console.log(response.data._id);
-
-      <Redirect to={`offer/${response.data.id}`} />;
+      history.push(`offer/${response.data.id}`);
     } catch (error) {
       console.log(error.message);
     }
@@ -93,8 +85,21 @@ const Publish = ({ token }) => {
         <form onSubmit={handleSubmit}>
           <fieldset>
             <h3>Ajoute jusqu'à 5 photos</h3>
-            <div className="files">
-              <input multiple={true} type="file" onChange={handleFile} />
+            <div className="files-section">
+              <Dropzone onDrop={(acceptedFiles) => setFile(acceptedFiles[0])}>
+                {({ getRootProps, getInputProps }) => (
+                  <section className="dragndrop">
+                    <div className="dropzoneStyle" {...getRootProps()}>
+                      <input {...getInputProps()} />
+                      <div>{file.name}</div>
+                      <p>
+                        Faîtes glisser les fichiers que vous souhaitez envoyer
+                      </p>
+                    </div>
+                  </section>
+                )}
+              </Dropzone>
+              {/* <input multiple={true} type="file" onChange={handleFile} /> */}
             </div>
           </fieldset>
           <fieldset>

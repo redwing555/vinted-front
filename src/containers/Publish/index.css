@@ -32,12 +32,16 @@
   color: #999999;
 }
 
-.publish-section .files {
+.publish-section .files-section {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: auto;
   border: 1px dashed #e2e2e2;
+}
+
+.dragndrop {
+  padding: 40px;
 }
 
 .publish-section fieldset > div {
