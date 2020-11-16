@@ -13,7 +13,7 @@ const SearchBar = ({ setOffers, page, limit, setPageMax }) => {
 
     try {
       const response = await axios.get(
-        `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&sort=${select}&page=${page}&limit=${limit}`
+        `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&sort=${select}`
       );
       setOffers(response.data.offers);
       setPageMax(Math.round(Number(response.data.count) / limit));

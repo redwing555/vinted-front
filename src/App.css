@@ -10,6 +10,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 hr {
   display: block;
   height: 1px;
@@ -20,4 +21,8 @@ hr {
 
 input::placeholder {
   color: #c7c7c7;
+}
+
+.carrousel {
+  margin-top: 200px;
 }

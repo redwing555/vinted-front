@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import Annonce from "../../components/Annonce/index";
 import "./index.css";
 
-const Publish = () => {
+const Publish = ({ token }) => {
   return <Annonce />;
 };
 

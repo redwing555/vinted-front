@@ -1,6 +1,7 @@
 .publish-section {
   background-color: #ebedee;
-  height: 100vh;
+  padding-top: 100px;
+  padding-bottom: 50px;
 }
 
 .publish-section fieldset {
@@ -11,8 +12,12 @@
   padding: 20px;
 }
 
+.publish-section fieldset > div {
+  display: flex;
+  justify-content: space-between;
+}
+
 .publish-section > div:first-child {
-  margin-top: 200px;
   width: 60%;
-  margin: 100px auto;
+  margin: auto;
 }

@@ -66,13 +66,13 @@ function App() {
           <Offer />
         </Route>
         <Route path="/signup">
-          <SignUp />
+          <SignUp setUser={setUser} />
         </Route>
         <Route path="/login">
-          <Login />
+          <Login setUser={setUser} />
         </Route>
         <Route path="/publish">
-          <Publish />
+          <Publish token={token} />
         </Route>
         <Route path="/">
           <Home

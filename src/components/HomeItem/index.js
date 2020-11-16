@@ -9,7 +9,9 @@ const HomeItem = ({ offers }) => {
       <Link key={index} to={`/offer/${offerId}`}>
         <div className="home-product-item">
           <div>
-            <img src={item.owner.account.avatar.url} alt="" />
+            {item.owner.account.avatar && (
+              <img src={item.owner.account.avatar.url} alt="" />
+            )}
             <p>{item.owner.account.username}</p>
           </div>
           <img src={item.product_image.url} alt="" />

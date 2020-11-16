@@ -40,7 +40,7 @@ const Home = ({
           `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=${limit}`
         );
         setOffers(response.data.offers);
-        setPageMax(Math.round(Number(response.data.count) / limit));
+        setPageMax(Math.ceil(Number(response.data.count) / limit));
 
         setIsLoading(false);
       } catch (error) {
@@ -51,23 +51,27 @@ const Home = ({
     fetchData();
   }, [page]);
 
-  return isLoading === true ? (
-    <div className="loading">
-      <Loader
-        type="Oval"
-        color="#09aeb8"
-        height={100}
-        width={100}
-        timeout={3000}
-      />
-    </div>
-  ) : (
+  return (
     <>
       <HeroBanner />
-      <main>
-        <ClothingItem offers={offers} />
-      </main>
-      <div className="pages">{renderPages()}</div>
+      {isLoading === true ? (
+        <div className="loading-home">
+          <Loader
+            type="Oval"
+            color="#09aeb8"
+            height={100}
+            width={100}
+            timeout={99999}
+          />
+        </div>
+      ) : (
+        <>
+          <main>
+            <ClothingItem offers={offers} />
+          </main>
+          <div className="pages">{renderPages()}</div>
+        </>
+      )}
     </>
   );
 };

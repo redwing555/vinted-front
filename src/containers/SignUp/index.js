@@ -1,20 +1,19 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 import axios from "axios";
 import "./index.css";
 const SignUp = ({ setUser }) => {
+  let history = useHistory();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [phone, setPhone] = useState("");
-
   const [error, setError] = useState("");
 
   const handleEmail = (ev) => {
     setEmail(ev.target.value);
-  };
-
-  const handlePhone = (ev) => {
-    setPhone(ev.target.value);
   };
 
   const handleUsername = (ev) => {
@@ -29,20 +28,19 @@ const SignUp = ({ setUser }) => {
     ev.preventDefault();
 
     try {
-      const data = {
-        username: username,
-        email: email,
-        password: password,
-      };
-
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-        data
+        {
+          username: username,
+          email: email,
+          password: password,
+        }
       );
 
-      if (response.status === 200) {
+      if (response.data.token) {
         const token = response.data.token;
         setUser(token);
+        history.push("/");
       }
     } catch (error) {
       setError(error.response.data.message || error.response.data.error);
@@ -59,21 +57,14 @@ const SignUp = ({ setUser }) => {
               type="text"
               onChange={handleUsername}
               value={username}
-              placeholder="Pseudo"
+              placeholder="Nom d'utilisateur"
             />
             <input
               className={error !== "" ? "input-error" : "input-modal"}
               type="email"
               onChange={handleEmail}
               value={email}
-              placeholder="Adresse email"
-            />
-            <input
-              type="text"
-              className={error !== "" ? "input-error" : "input-modal"}
-              onChange={handlePhone}
-              value={phone}
-              placeholder="Téléphone"
+              placeholder="Email"
             />
             <input
               className={error !== "" ? "input-error" : "input-modal"}
@@ -82,14 +73,23 @@ const SignUp = ({ setUser }) => {
               value={password}
               placeholder="Mot de passe"
             />
-            <input type="checkbox" value="S'inscrire à notre newsletter" />
+            <div className="newsletter">
+              <input type="checkbox" />
+              <p>S'inscrire à notre newsletter</p>
+            </div>
             <p className="cgu">
               En m'inscrivant je confirme avoir lu et accepté les Termes &
               Conditions et Politique de Confidentialité de Vinted. Je confirme
               avoir au moins 18 ans.
             </p>
-            <input type="submit" value="Se connecter" />
+
+            <input type="submit" value="S'inscrire" />
           </form>
+          <div>
+            <Link className="signup-text" to="/login">
+              Tu as déjà un compte ? Connecte-toi !
+            </Link>
+          </div>
           <div>
             <p className="error-message">{error}</p>
           </div>

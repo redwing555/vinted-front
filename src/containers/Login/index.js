@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./index.css";
 
 const Login = ({ setUser }) => {
+  let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -20,21 +22,21 @@ const Login = ({ setUser }) => {
     ev.preventDefault();
 
     try {
-      const data = {
-        email: email,
-        password: password,
-      };
-
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/login",
-        data
+        {
+          email: email,
+          password: password,
+        }
       );
 
-      if (response.status === 200) {
+      if (response.data.token) {
         const token = response.data.token;
         setUser(token);
+        history.push("/");
       }
     } catch (error) {
+      console.log(error);
       setError(error.response.data.message || error.response.data.error);
     }
   };
@@ -61,12 +63,12 @@ const Login = ({ setUser }) => {
             <input type="submit" value="Se connecter" />
           </form>
           <div>
-            <p className="error-message">{error}</p>
+            <Link className="signup-text" to="/signup">
+              Pas encore de compte ? Inscris-toi !
+            </Link>
           </div>
           <div>
-            <Link className="signup-text" to="/signup">
-              Pas de compte ? Cliquez ici pour vous inscrire
-            </Link>
+            <p className="error-message">{error}</p>
           </div>
         </div>
       </section>

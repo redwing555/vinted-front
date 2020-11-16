@@ -55,7 +55,7 @@ const Header = ({
               </Link>
             )}
 
-            <Link to="/publish">
+            <Link to={token ? "/publish" : "/login"}>
               <button>Vends tes articles</button>
             </Link>
           </div>
