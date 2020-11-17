@@ -6,6 +6,10 @@ import Loader from "react-loader-spinner";
 import axios from "axios";
 import "./index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Home = ({ offers, setOffers, apiUrl, filter }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -70,18 +74,35 @@ const Home = ({ offers, setOffers, apiUrl, filter }) => {
             width={100}
             timeout={99999}
           />
-        </div> ? (
-          !setOffers
-        ) : (
-          <p>Aucun résultat ne correspond à la recherche</p>
-        )
+        </div>
       ) : (
         <>
           <main>
             <OrderByPrice setSort={setSort} />
             <ClothingItem offers={offers} />
           </main>
-          <div className="pages">{renderPages()}</div>
+          <div className="pages">
+            <FontAwesomeIcon
+              className={page === 1 ? "not-allowed" : ""}
+              onClick={() => {
+                if (page > 1) {
+                  setPage(page - 1);
+                }
+              }}
+              icon={faChevronLeft}
+            />
+
+            {renderPages()}
+            <FontAwesomeIcon
+              className={page === pageMax ? "not-allowed" : ""}
+              onClick={() => {
+                if (page < pageMax) {
+                  setPage(page + 1);
+                }
+              }}
+              icon={faChevronRight}
+            />
+          </div>
         </>
       )}
     </>

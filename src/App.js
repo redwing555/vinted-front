@@ -7,11 +7,12 @@ import {
   Redirect,
 } from "react-router-dom";
 import Header from "./components/Header";
-import Home from "./containers/Home/index";
-import Offer from "./containers/Offer/index";
-import Publish from "./containers/Publish/index";
-import Login from "./containers/Login/index";
-import SignUp from "./containers/SignUp/index";
+import Home from "./containers/Home";
+import Payment from "./containers/Payment";
+import Offer from "./containers/Offer";
+import Publish from "./containers/Publish";
+import Login from "./containers/Login";
+import SignUp from "./containers/SignUp";
 import Cookies from "js-cookie";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -24,6 +25,7 @@ import {
   faCaretDown,
   faUpload,
   faChevronLeft,
+  faShieldAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import MobileMenu from "./components/MobileMenu";
 library.add(
@@ -35,7 +37,8 @@ library.add(
   faCaretDown,
   faUpload,
   faChevronRight,
-  faChevronLeft
+  faChevronLeft,
+  faShieldAlt
 );
 
 function App() {
@@ -85,6 +88,10 @@ function App() {
       <Switch>
         <Route path="/offer/:id">
           <Offer />
+        </Route>
+
+        <Route path="/payment">
+          {token ? <Payment apiUrl={apiUrl} /> : <Redirect to="/login" />}
         </Route>
         <Route path="/signup">
           <SignUp setUser={setUser} apiUrl={apiUrl} />

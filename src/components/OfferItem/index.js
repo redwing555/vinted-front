@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.css";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const OfferItem = ({ offer }) => {
@@ -40,8 +41,9 @@ const OfferItem = ({ offer }) => {
               <p>{offer.product_name}</p>
               <p>{offer.product_description}</p>
             </div>
-
-            <button>Acheter</button>
+            <Link to="/payment" offer={offer}>
+              <button>Acheter</button>
+            </Link>
           </div>
           <div className="user-description">
             <p>

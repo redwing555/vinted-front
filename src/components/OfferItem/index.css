@@ -145,6 +145,10 @@
   margin-top: 20px;
 }
 
+.offer-product a {
+  text-decoration: none;
+}
+
 .user-description .rating {
   display: flex;
   color: #f7c60e;
