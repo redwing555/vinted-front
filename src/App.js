@@ -100,11 +100,7 @@ function App() {
           <Login setUser={setUser} apiUrl={apiUrl} />
         </Route>
         <Route exact path="/publish">
-          {token ? (
-            <Publish token={token} apiUrl={apiUrl} />
-          ) : (
-            <Redirect to="/login" />
-          )}
+          <Publish token={token} apiUrl={apiUrl} />
         </Route>
         <Route path="/">
           <Home

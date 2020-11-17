@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 
 const OrderByPrice = ({ setSort }) => {
   const [select, setSelect] = useState("");
-  setSort(select);
+  useEffect(() => {
+    setSort(select);
+  }, [select, setSort]);
 
   return (
     <div className="orderByPrice">

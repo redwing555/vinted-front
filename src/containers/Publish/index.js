@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 import "./index.css";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useHistory } from "react-router-dom";
@@ -75,7 +76,7 @@ const Publish = ({ token }) => {
 
   console.log(file);
 
-  return (
+  return token ? (
     <section className="publish-section">
       <div>
         <h2>Vends ton article</h2>
@@ -212,6 +213,13 @@ const Publish = ({ token }) => {
         </form>
       </div>
     </section>
+  ) : (
+    <Redirect
+      to={{
+        pathname: "/login",
+        state: { fromPublish: true },
+      }}
+    />
   );
 };
 

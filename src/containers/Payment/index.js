@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 import { useLocation } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../../components/CheckoutForm/index";
@@ -10,18 +11,21 @@ const stripePromise = loadStripe("pk_test_5z9rSB8XwuAOihoBixCMfL6X");
 
 const Payment = ({ apiUrl }) => {
   const location = useLocation();
-  const { price, name, picture } = location.state;
 
   return (
     <section className="payment">
-      <Elements stripe={stripePromise}>
-        <CheckoutForm
-          apiUrl={apiUrl}
-          price={price}
-          name={name}
-          picture={picture}
-        />
-      </Elements>
+      {location.state ? (
+        <Elements stripe={stripePromise}>
+          <CheckoutForm
+            apiUrl={apiUrl}
+            price={location.state.price}
+            name={location.state.name}
+            picture={location.state.picture}
+          />
+        </Elements>
+      ) : (
+        <Redirect to="/" />
+      )}
     </section>
   );
 };

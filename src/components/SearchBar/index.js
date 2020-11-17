@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./index.css";
@@ -10,7 +10,9 @@ const SearchBar = ({ setFilter }) => {
   const [priceMax, setPriceMax] = useState("");
   const [priceModal, setPriceModal] = useState(false);
 
-  setFilter(`&title=${search}&priceMin=${priceMin}&priceMax=${priceMax}`);
+  useEffect(() => {
+    setFilter(`&title=${search}&priceMin=${priceMin}&priceMax=${priceMax}`);
+  }, [search, priceMin, priceMax, setFilter]);
 
   const handlePriceMax = (ev) => {
     setPriceMax(ev.target.value);
