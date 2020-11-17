@@ -8,7 +8,7 @@ import CheckoutForm from "../../components/CheckoutForm/index";
 
 // Public key Stripe
 const stripePromise = loadStripe("pk_test_5z9rSB8XwuAOihoBixCMfL6X");
-
+// pk_live_Q22EEz7WJRaLFwbHYYi7ZiGC00EJnkGewM
 const Payment = ({ apiUrl }) => {
   const location = useLocation();
 

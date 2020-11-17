@@ -5,7 +5,7 @@ import Loader from "react-loader-spinner";
 
 import axios from "axios";
 
-const Offer = () => {
+const Offer = ({ apiUrl }) => {
   const [offer, setOffer] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -14,9 +14,7 @@ const Offer = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
-        );
+        const response = await axios.get(`${apiUrl}/offer/${id}`);
         setOffer(response.data);
         setIsLoading(false);
       } catch (error) {

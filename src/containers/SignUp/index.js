@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import axios from "axios";
 import "./index.css";
-const SignUp = ({ setUser }) => {
+const SignUp = ({ setUser, apiUrl }) => {
   let history = useHistory();
 
   const [email, setEmail] = useState("");
@@ -28,14 +28,11 @@ const SignUp = ({ setUser }) => {
     ev.preventDefault();
 
     try {
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-        {
-          username: username,
-          email: email,
-          password: password,
-        }
-      );
+      const response = await axios.post(`${apiUrl}/user/signup`, {
+        username: username,
+        email: email,
+        password: password,
+      });
 
       if (response.data.token) {
         const token = response.data.token;

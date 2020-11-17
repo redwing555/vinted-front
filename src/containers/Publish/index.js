@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Dropzone from "react-dropzone";
+import { useDropzone } from "react-dropzone";
+
 import "./index.css";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useHistory } from "react-router-dom";
 
-const Publish = ({ token }) => {
+const Publish = ({ token, apiUrl }) => {
   let history = useHistory();
 
   const [title, setTitle] = useState("");
@@ -44,6 +46,10 @@ const Publish = ({ token }) => {
     setPrice(Number(ev.target.value));
   };
 
+  useEffect(() => {
+    setFile(acceptedFiles);
+  }, []);
+
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     try {
@@ -58,15 +64,11 @@ const Publish = ({ token }) => {
       params.append("picture", file);
       params.append("city", city);
 
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
-        params,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.post(`${apiUrl}/offer/publish`, params, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       history.push(`offer/${response.data._id}`);
     } catch (error) {
@@ -74,7 +76,35 @@ const Publish = ({ token }) => {
     }
   };
 
-  console.log(file);
+  const {
+    acceptedFiles,
+    fileRejections,
+    getRootProps,
+    getInputProps,
+  } = useDropzone({
+    maxFiles: 2,
+  });
+
+  console.log(acceptedFiles);
+
+  const acceptedFileItems = acceptedFiles.map((file) => (
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+    </li>
+  ));
+
+  const fileRejectionItems = fileRejections.map(({ file, errors }) => {
+    return (
+      <li key={file.path}>
+        {file.path} - {file.size} bytes
+        <ul>
+          {errors.map((e) => (
+            <li key={e.code}>{e.message}</li>
+          ))}
+        </ul>
+      </li>
+    );
+  });
 
   return token ? (
     <section className="publish-section">
@@ -85,22 +115,37 @@ const Publish = ({ token }) => {
           <fieldset>
             <h3>Ajoute jusqu'à 5 photos</h3>
             <div className="files-section">
-              <Dropzone
-                multiple={true}
+              <section className="container">
+                <div {...getRootProps({ className: "dropzone" })}>
+                  <input {...getInputProps()} />
+                  <p>Drag 'n' drop some files here, or click to select files</p>
+                  <em>
+                    (2 files are the maximum number of files you can drop here)
+                  </em>
+                </div>
+                <aside>
+                  <h4>Accepted files</h4>
+                  <ul>{acceptedFileItems}</ul>
+                  <h4>Rejected files</h4>
+                  <ul>{fileRejectionItems}</ul>
+                </aside>
+              </section>
+              {/* <Dropzone
+                multiple
                 onDrop={(acceptedFiles) => setFile(acceptedFiles[0])}
               >
                 {({ getRootProps, getInputProps }) => (
                   <section className="dragndrop">
                     <div className="dropzoneStyle" {...getRootProps()}>
                       <input multiple {...getInputProps()} />
-                      <div>{file.name}</div>
+                      <div>{acceptedFileItems}</div>
                       <FontAwesomeIcon icon="upload" />
 
                       <p>Cliquez ou déposez vos fichiers</p>
                     </div>
                   </section>
                 )}
-              </Dropzone>
+              </Dropzone> */}
             </div>
           </fieldset>
           <fieldset>

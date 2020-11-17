@@ -4,10 +4,10 @@ import { useHistory, useLocation } from "react-router-dom";
 import axios from "axios";
 import "./index.css";
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, apiUrl }) => {
   let history = useHistory();
   const location = useLocation();
-  console.log(location);
+  const fromPublish = location.state?.fromPublish ? true : false;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,18 +25,16 @@ const Login = ({ setUser }) => {
     ev.preventDefault();
 
     try {
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/login",
-        {
-          email: email,
-          password: password,
-        }
-      );
+      const response = await axios.post(`${apiUrl}/user/login`, {
+        email: email,
+        password: password,
+      });
 
       if (response.data.token) {
         const token = response.data.token;
         setUser(token);
-        history.push(location.state.fromPublish ? "/publish" : "/");
+
+        history.push(fromPublish ? "/publish" : "/");
       }
     } catch (error) {
       console.log(error);

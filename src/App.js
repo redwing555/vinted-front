@@ -87,7 +87,7 @@ function App() {
 
       <Switch>
         <Route path="/offer/:id">
-          <Offer />
+          <Offer apiUrl={apiUrl} />
         </Route>
 
         <Route path="/payment">

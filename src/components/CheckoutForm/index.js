@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShieldAlt } from "@fortawesome/free-solid-svg-icons";
 
 const CheckoutForm = ({ apiUrl, price, name, picture }) => {
+  const history = useHistory();
   const stripe = useStripe();
   const elements = useElements();
   const [success, setSuccess] = useState(false);
@@ -27,7 +29,8 @@ const CheckoutForm = ({ apiUrl, price, name, picture }) => {
       });
       if (response.data.status === "succeeded") {
         setSuccess(true);
-        console.log("test");
+        history.push("/");
+        alert("Achat validé !");
       }
     } catch (error) {
       console.log(error.message);
