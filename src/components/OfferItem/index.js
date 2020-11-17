@@ -1,9 +1,11 @@
 import React from "react";
 import "./index.css";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const OfferItem = ({ offer }) => {
+  let history = useHistory();
+
   return (
     <>
       <div className="offer-product">
@@ -41,9 +43,17 @@ const OfferItem = ({ offer }) => {
               <p>{offer.product_name}</p>
               <p>{offer.product_description}</p>
             </div>
-            <Link to="/payment" offer={offer}>
-              <button>Acheter</button>
-            </Link>
+            <button
+              onClick={() => {
+                history.push("/payment", {
+                  price: offer.product_price,
+                  name: offer.product_name,
+                  picture: offer.product_pictures[0].url,
+                });
+              }}
+            >
+              Acheter
+            </button>
           </div>
           <div className="user-description">
             <p>

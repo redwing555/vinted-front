@@ -4,23 +4,30 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShieldAlt } from "@fortawesome/free-solid-svg-icons";
 
-const CheckoutForm = ({ apiUrl, offer }) => {
+const CheckoutForm = ({ apiUrl, price, name, picture }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [success, setSuccess] = useState(false);
+  const shipping = 3.28;
+  const protection = 7.45;
+  const total = (shipping + protection + price).toFixed(2).toString();
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
     try {
       const cardElement = elements.getElement(CardElement);
       const stripeResponse = await stripe.createToken(cardElement, {
-        name: "hello",
+        name: name,
       });
       const stripeToken = stripeResponse.token.id;
       const response = await axios.post(`${apiUrl}/payment`, {
-        stripeToken: stripeToken,
+        token: stripeToken,
+        title: name,
+        amount: total,
       });
       if (response.data.status === "succeeded") {
         setSuccess(true);
+        console.log("test");
       }
     } catch (error) {
       console.log(error.message);
@@ -34,9 +41,9 @@ const CheckoutForm = ({ apiUrl, offer }) => {
           <div>
             <p className="title">Commande</p>
             <div>
-              <p>Image</p>
-              <p>prix</p>
-              {/* <p>{offer.product_name}</p> */}
+              <img src={picture} alt="" />
+              <p>{name}</p>
+              <p>{price} €</p>
             </div>
           </div>
         </fieldset>
@@ -59,21 +66,21 @@ const CheckoutForm = ({ apiUrl, offer }) => {
             <p>Résumé de la commande</p>
             <div>
               <p>Commande</p>
-              <p>130€</p>
+              <p>{price} €</p>
             </div>
             <div>
               <p>Frais protection acheteurs</p>
-              <p>7€</p>
+              <p>{protection} €</p>
             </div>
             <div>
               <p>Frais de port</p>
-              <p>3,28€</p>
+              <p>{shipping} €</p>
             </div>
           </div>
           <div className="checkout">
             <div>
               <p>Total</p>
-              <p>price</p>
+              <p>{total} €</p>
             </div>
             <div>
               <button type="submit">Payer maintenant</button>
