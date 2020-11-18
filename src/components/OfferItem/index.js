@@ -9,7 +9,11 @@ const OfferItem = ({ offer }) => {
   return (
     <>
       <div className="offer-product">
-        {offer.product_pictures.length === 1 ? (
+        {offer.product_pictures.length === 0 ? (
+          <div className="one-picture">
+            <img src={offer.product_image.secure_url} alt="" />
+          </div>
+        ) : offer.product_pictures.length === 1 ? (
           <div className="one-picture">
             <img src={offer.product_pictures[0].url} alt="" />
           </div>
