@@ -48,6 +48,7 @@ const OfferItem = ({ offer }) => {
                 history.push("/payment", {
                   price: offer.product_price,
                   name: offer.product_name,
+                  description: offer.product_details[0].MARQUE,
                   picture: offer.product_pictures[0].url,
                 });
               }}

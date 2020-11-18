@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Dropzone from "react-dropzone";
+import React, { useState, useEffect, useMemo } from "react";
 import { useDropzone } from "react-dropzone";
 
 import "./index.css";
@@ -46,9 +45,7 @@ const Publish = ({ token, apiUrl }) => {
     setPrice(Number(ev.target.value));
   };
 
-  useEffect(() => {
-    setFile(acceptedFiles);
-  }, []);
+  console.log(file);
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
@@ -64,47 +61,153 @@ const Publish = ({ token, apiUrl }) => {
       params.append("picture", file);
       params.append("city", city);
 
-      const response = await axios.post(`${apiUrl}/offer/publish`, params, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.post(
+        `http://localhost:3000/offer/publish`,
+        params,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       history.push(`offer/${response.data._id}`);
     } catch (error) {
       console.log(error.message);
     }
   };
+  const [files, setFiles] = useState([]);
 
   const {
     acceptedFiles,
-    fileRejections,
+    isDragActive,
+    isDragAccept,
+    isDragReject,
     getRootProps,
     getInputProps,
+    // fileRejections,
   } = useDropzone({
-    maxFiles: 2,
+    accept: "image/jpeg, image/png, image/jpg",
+    maxFiles: 5,
+    onDrop: (acceptedFiles) => {
+      setFiles(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        )
+      );
+    },
   });
 
-  console.log(acceptedFiles);
+  const thumbsContainer = {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    marginTop: 16,
+  };
 
-  const acceptedFileItems = acceptedFiles.map((file) => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
+  const thumb = {
+    display: "inline-flex",
+    borderRadius: 2,
+    border: "1px solid #eaeaea",
+    marginBottom: 8,
+    marginRight: 8,
+    width: 50,
+    height: 50,
+    padding: 4,
+    boxSizing: "border-box",
+  };
+
+  const thumbInner = {
+    display: "flex",
+    minWidth: 0,
+    overflow: "hidden",
+  };
+
+  const img = {
+    display: "block",
+    width: "auto",
+    height: "100%",
+  };
+
+  const baseStyle = {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "30px",
+    cursor: "pointer",
+    borderWidth: 2,
+    borderRadius: 2,
+    borderColor: "#eeeeee",
+    borderStyle: "dashed",
+    backgroundColor: "#fafafa",
+    color: "#bdbdbd",
+    outline: "none",
+    transition: "border .24s ease-in-out",
+  };
+
+  const activeStyle = {
+    borderColor: "#2196f3",
+  };
+
+  const acceptStyle = {
+    borderColor: "#00e676",
+  };
+
+  const rejectStyle = {
+    borderColor: "#ff1744",
+  };
+
+  const style = useMemo(
+    () => ({
+      ...baseStyle,
+      ...(isDragActive ? activeStyle : {}),
+      ...(isDragAccept ? acceptStyle : {}),
+      ...(isDragReject ? rejectStyle : {}),
+    }),
+    [isDragActive, isDragReject, isDragAccept]
+  );
+
+  useEffect(() => {
+    setFile(acceptedFiles);
+  }, [acceptedFiles]);
+
+  // const files = acceptedFiles.map((file) => (
+  //   <li key={file.path}>
+  //     {file.path} - {file.size} bytes
+  //   </li>
+  // ));
+
+  // const fileRejectionItems = fileRejections.map(({ file, errors }) => {
+  //   return (
+  //     <li key={file.path}>
+  //       {file.path} - {file.size} bytes
+  //       <ul>
+  //         {errors.map((e) => (
+  //           <li key={e.code}>{e.message}</li>
+  //         ))}
+  //       </ul>
+  //     </li>
+  //   );
+  // });
+
+  const thumbs = files.map((file) => (
+    <div style={thumb} key={file.name}>
+      <div style={thumbInner}>
+        <img src={file.preview} style={img} />
+      </div>
+    </div>
   ));
 
-  const fileRejectionItems = fileRejections.map(({ file, errors }) => {
-    return (
-      <li key={file.path}>
-        {file.path} - {file.size} bytes
-        <ul>
-          {errors.map((e) => (
-            <li key={e.code}>{e.message}</li>
-          ))}
-        </ul>
-      </li>
-    );
-  });
+  useEffect(
+    () => () => {
+      // Make sure to revoke the data uris to avoid memory leaks
+      files.forEach((file) => URL.revokeObjectURL(file.preview));
+    },
+    [files]
+  );
 
   return token ? (
     <section className="publish-section">
@@ -116,36 +219,20 @@ const Publish = ({ token, apiUrl }) => {
             <h3>Ajoute jusqu'à 5 photos</h3>
             <div className="files-section">
               <section className="container">
-                <div {...getRootProps({ className: "dropzone" })}>
+                <div {...getRootProps({ style })}>
                   <input {...getInputProps()} />
-                  <p>Drag 'n' drop some files here, or click to select files</p>
-                  <em>
-                    (2 files are the maximum number of files you can drop here)
-                  </em>
+                  <p>
+                    Cliquez ou glissez les fichiers que vous souhaitez
+                    sélectionner
+                  </p>
                 </div>
-                <aside>
-                  <h4>Accepted files</h4>
-                  <ul>{acceptedFileItems}</ul>
-                  <h4>Rejected files</h4>
-                  <ul>{fileRejectionItems}</ul>
+                <aside style={thumbsContainer}>
+                  {thumbs}
+                  {/* 
+                  <ul>{files}</ul>
+                  <ul>{fileRejectionItems}</ul> */}
                 </aside>
               </section>
-              {/* <Dropzone
-                multiple
-                onDrop={(acceptedFiles) => setFile(acceptedFiles[0])}
-              >
-                {({ getRootProps, getInputProps }) => (
-                  <section className="dragndrop">
-                    <div className="dropzoneStyle" {...getRootProps()}>
-                      <input multiple {...getInputProps()} />
-                      <div>{acceptedFileItems}</div>
-                      <FontAwesomeIcon icon="upload" />
-
-                      <p>Cliquez ou déposez vos fichiers</p>
-                    </div>
-                  </section>
-                )}
-              </Dropzone> */}
             </div>
           </fieldset>
           <fieldset>

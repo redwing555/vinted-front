@@ -33,33 +33,13 @@
   color: #999999;
 }
 
-.dropzoneStyle {
-  outline: none;
-  cursor: pointer;
-  border: 1px dashed #eeeeee;
-  position: absolute;
+.publish-section .container {
   margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 150px;
-  left: 0px;
-  top: 60px;
-  width: 95%;
-  margin-left: 22px;
-  margin-right: 22px;
-
-  color: #999999;
+  margin-top: 20px;
 }
-.publish-section svg {
-  color: #eeeeee;
-  font-size: 42px;
-  margin: auto;
-  display: flex;
-  justify-self: center;
-  margin-bottom: 20px;
-  margin-top: 15px;
+
+aside {
+  margin-top: 10px;
 }
 
 .publish-section fieldset > div {

@@ -20,6 +20,7 @@ const Payment = ({ apiUrl }) => {
             apiUrl={apiUrl}
             price={location.state.price}
             name={location.state.name}
+            description={location.state.description}
             picture={location.state.picture}
           />
         </Elements>

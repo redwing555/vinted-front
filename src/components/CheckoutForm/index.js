@@ -3,9 +3,9 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShieldAlt } from "@fortawesome/free-solid-svg-icons";
+import { faInfoCircle, faShieldAlt } from "@fortawesome/free-solid-svg-icons";
 
-const CheckoutForm = ({ apiUrl, price, name, picture }) => {
+const CheckoutForm = ({ apiUrl, price, name, picture, description }) => {
   const history = useHistory();
   const stripe = useStripe();
   const elements = useElements();
@@ -43,28 +43,41 @@ const CheckoutForm = ({ apiUrl, price, name, picture }) => {
         <fieldset>
           <div>
             <p className="title">Commande</p>
-            <div>
-              <img src={picture} alt="" />
-              <p>{name}</p>
-              <p>{price} €</p>
+            <div className="order">
+              <div>
+                <div>
+                  <img src={picture} alt="" />
+                </div>
+                <div>
+                  <p>{name}</p>
+                  <p className="order-description">{description}</p>
+                </div>
+              </div>
+              <div>
+                <p>{price} €</p>
+              </div>
             </div>
           </div>
         </fieldset>
 
         <fieldset>
           <p className="title">Adresse</p>
-          <input type="text" placeholder="Nom complet" />
-          <input type="text" placeholder="Adresse" />
-          <input type="text" placeholder="Code postal" />
-          <input type="text" placeholder="Ville" />
+          <div>
+            <input type="text" placeholder="Nom complet" />
+            <input type="text" placeholder="Adresse" />
+          </div>
+          <div>
+            <input type="text" placeholder="Code postal" />
+            <input type="text" placeholder="Ville" />
+          </div>
         </fieldset>
         <fieldset>
           <p className="title">Paiement</p>
-          <CardElement />
+          <CardElement className="credit-card" />
         </fieldset>
       </div>
       <div>
-        <fieldset>
+        <fieldset className="fieldset-resume">
           <div className="resume">
             <p>Résumé de la commande</p>
             <div>
@@ -72,7 +85,10 @@ const CheckoutForm = ({ apiUrl, price, name, picture }) => {
               <p>{price} €</p>
             </div>
             <div>
-              <p>Frais protection acheteurs</p>
+              <p>
+                Frais protection acheteurs{" "}
+                <FontAwesomeIcon icon={faInfoCircle} />
+              </p>
               <p>{protection} €</p>
             </div>
             <div>
@@ -87,7 +103,7 @@ const CheckoutForm = ({ apiUrl, price, name, picture }) => {
             </div>
             <div>
               <button type="submit">Payer maintenant</button>
-              <div>
+              <div className="secure-paiement">
                 <FontAwesomeIcon icon={faShieldAlt} />
                 <p>Ce paiement est crypté et sécurisé</p>
               </div>

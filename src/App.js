@@ -26,6 +26,7 @@ import {
   faUpload,
   faChevronLeft,
   faShieldAlt,
+  faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import MobileMenu from "./components/MobileMenu";
 library.add(
@@ -38,7 +39,8 @@ library.add(
   faUpload,
   faChevronRight,
   faChevronLeft,
-  faShieldAlt
+  faShieldAlt,
+  faInfoCircle
 );
 
 function App() {
