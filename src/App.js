@@ -56,7 +56,7 @@ function App() {
   const [filter, setFilter] = useState("");
 
   // API du backend
-  const apiUrl = "https://lereacteur-vinted-api.herokuapp.com";
+  const apiUrl = "https://vinted-clone-api.herokuapp.com";
 
   const setUser = (tokenToSet) => {
     if (tokenToSet) {

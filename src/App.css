@@ -26,3 +26,22 @@ input::placeholder {
 .carrousel {
   margin-top: 200px;
 }
+
+/* PAGINATION */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.pagination a {
+  padding: 0 13px;
+  outline: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.active {
+  font-family: "Maison Neue Bold";
+}

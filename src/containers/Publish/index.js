@@ -1,17 +1,14 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { useDropzone } from "react-dropzone";
-
+import React, { useState } from "react";
 import "./index.css";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useHistory } from "react-router-dom";
 
 const Publish = ({ token, apiUrl }) => {
   let history = useHistory();
-
+  const [preview, setPreview] = useState("");
   const [title, setTitle] = useState("");
-  const [file, setFile] = useState([]);
+  const [file, setFile] = useState({});
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
   const [color, setColor] = useState("");
@@ -19,6 +16,7 @@ const Publish = ({ token, apiUrl }) => {
   const [condition, setCondition] = useState("");
   const [city, setCity] = useState("");
   const [price, setPrice] = useState("");
+  console.log(file);
 
   const handleTitle = (ev) => {
     setTitle(ev.target.value);
@@ -42,10 +40,8 @@ const Publish = ({ token, apiUrl }) => {
     setCity(ev.target.value);
   };
   const handlePrice = (ev) => {
-    setPrice(Number(ev.target.value));
+    setPrice(ev.target.value);
   };
-
-  console.log(file);
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
@@ -61,153 +57,18 @@ const Publish = ({ token, apiUrl }) => {
       params.append("picture", file);
       params.append("city", city);
 
-      const response = await axios.post(
-        `http://localhost:3000/offer/publish`,
-        params,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.post(`${apiUrl}/offer/publish`, params, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       history.push(`offer/${response.data._id}`);
     } catch (error) {
       console.log(error.message);
     }
   };
-  const [files, setFiles] = useState([]);
-
-  const {
-    acceptedFiles,
-    isDragActive,
-    isDragAccept,
-    isDragReject,
-    getRootProps,
-    getInputProps,
-    // fileRejections,
-  } = useDropzone({
-    accept: "image/jpeg, image/png, image/jpg",
-    maxFiles: 5,
-    onDrop: (acceptedFiles) => {
-      setFiles(
-        acceptedFiles.map((file) =>
-          Object.assign(file, {
-            preview: URL.createObjectURL(file),
-          })
-        )
-      );
-    },
-  });
-
-  const thumbsContainer = {
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    marginTop: 16,
-  };
-
-  const thumb = {
-    display: "inline-flex",
-    borderRadius: 2,
-    border: "1px solid #eaeaea",
-    marginBottom: 8,
-    marginRight: 8,
-    width: 50,
-    height: 50,
-    padding: 4,
-    boxSizing: "border-box",
-  };
-
-  const thumbInner = {
-    display: "flex",
-    minWidth: 0,
-    overflow: "hidden",
-  };
-
-  const img = {
-    display: "block",
-    width: "auto",
-    height: "100%",
-  };
-
-  const baseStyle = {
-    flex: 1,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: "30px",
-    cursor: "pointer",
-    borderWidth: 2,
-    borderRadius: 2,
-    borderColor: "#eeeeee",
-    borderStyle: "dashed",
-    backgroundColor: "#fafafa",
-    color: "#bdbdbd",
-    outline: "none",
-    transition: "border .24s ease-in-out",
-  };
-
-  const activeStyle = {
-    borderColor: "#2196f3",
-  };
-
-  const acceptStyle = {
-    borderColor: "#00e676",
-  };
-
-  const rejectStyle = {
-    borderColor: "#ff1744",
-  };
-
-  const style = useMemo(
-    () => ({
-      ...baseStyle,
-      ...(isDragActive ? activeStyle : {}),
-      ...(isDragAccept ? acceptStyle : {}),
-      ...(isDragReject ? rejectStyle : {}),
-    }),
-    [isDragActive, isDragReject, isDragAccept]
-  );
-
-  useEffect(() => {
-    setFile(acceptedFiles);
-  }, [acceptedFiles]);
-
-  // const files = acceptedFiles.map((file) => (
-  //   <li key={file.path}>
-  //     {file.path} - {file.size} bytes
-  //   </li>
-  // ));
-
-  // const fileRejectionItems = fileRejections.map(({ file, errors }) => {
-  //   return (
-  //     <li key={file.path}>
-  //       {file.path} - {file.size} bytes
-  //       <ul>
-  //         {errors.map((e) => (
-  //           <li key={e.code}>{e.message}</li>
-  //         ))}
-  //       </ul>
-  //     </li>
-  //   );
-  // });
-
-  const thumbs = files.map((file) => (
-    <div style={thumb} key={file.name}>
-      <div style={thumbInner}>
-        <img src={file.preview} style={img} />
-      </div>
-    </div>
-  ));
-
-  useEffect(
-    () => () => {
-      // Make sure to revoke the data uris to avoid memory leaks
-      files.forEach((file) => URL.revokeObjectURL(file.preview));
-    },
-    [files]
-  );
 
   return token ? (
     <section className="publish-section">
@@ -215,26 +76,39 @@ const Publish = ({ token, apiUrl }) => {
         <h2>Vends ton article</h2>
 
         <form onSubmit={handleSubmit}>
-          <fieldset>
-            <h3>Ajoute jusqu'à 5 photos</h3>
-            <div className="files-section">
-              <section className="container">
-                <div {...getRootProps({ style })}>
-                  <input {...getInputProps()} />
-                  <p>
-                    Cliquez ou glissez les fichiers que vous souhaitez
-                    sélectionner
-                  </p>
+          <div className="file-select">
+            {preview ? (
+              <div className="dashed-preview-image">
+                <img src={preview} alt="pré-visualisation" />
+                <div
+                  className="remove-img-button"
+                  onClick={() => {
+                    setPreview("");
+                  }}
+                >
+                  X
                 </div>
-                <aside style={thumbsContainer}>
-                  {thumbs}
-                  {/* 
-                  <ul>{files}</ul>
-                  <ul>{fileRejectionItems}</ul> */}
-                </aside>
-              </section>
-            </div>
-          </fieldset>
+              </div>
+            ) : (
+              <div className="dashed-preview-without">
+                <div className="input-design-default">
+                  <label htmlFor="file" className="label-file">
+                    <span className="input-sign">+</span>
+                    <span>Ajoute une photo</span>
+                  </label>
+                  <input
+                    id="file"
+                    type="file"
+                    className="input-file"
+                    onChange={(event) => {
+                      setFile(event.target.files[0]);
+                      setPreview(URL.createObjectURL(event.target.files[0]));
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
           <fieldset>
             <div>
               <label>Titre</label>

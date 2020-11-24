@@ -5,11 +5,7 @@ import HeroBanner from "../../components/HeroBanner/index";
 import Loader from "react-loader-spinner";
 import axios from "axios";
 import "./index.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
+import ReactPaginate from "react-paginate";
 
 const Home = ({ offers, setOffers, apiUrl, filter }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -26,22 +22,9 @@ const Home = ({ offers, setOffers, apiUrl, filter }) => {
   // State qui permet de trier par prix
   const [sort, setSort] = useState("");
 
-  const tab = [];
-
-  // Méthode qui permet d'afficher le nombre de pages dynamiquement
-  const renderPages = () => {
-    for (let i = 1; i <= pageMax; i++) {
-      tab.push(
-        <span
-          onClick={() => {
-            setPage(i);
-          }}
-        >
-          {i}
-        </span>
-      );
-    }
-    return tab;
+  const handlePageClick = (event) => {
+    console.log(event);
+    setPage(event.selected + 1);
   };
 
   useEffect(() => {
@@ -82,26 +65,21 @@ const Home = ({ offers, setOffers, apiUrl, filter }) => {
             <ClothingItem offers={offers} />
           </main>
           <div className="pages">
-            <FontAwesomeIcon
-              className={page === 1 ? "not-allowed" : ""}
-              onClick={() => {
-                if (page > 1) {
-                  setPage(page - 1);
-                }
-              }}
-              icon={faChevronLeft}
-            />
-
-            {renderPages()}
-            <FontAwesomeIcon
-              className={page === pageMax ? "not-allowed" : ""}
-              onClick={() => {
-                if (page < pageMax) {
-                  setPage(page + 1);
-                }
-              }}
-              icon={faChevronRight}
-            />
+            <div className="pages">
+              <ReactPaginate
+                previousLabel={"PREV"}
+                nextLabel={"NEXT"}
+                breakLabel={"..."}
+                breakClassName={"break-me"}
+                pageCount={pageMax}
+                marginPagesDisplayed={1}
+                pageRangeDisplayed={5}
+                onPageChange={handlePageClick}
+                containerClassName={"pagination"}
+                subContainerClassName={"pages"}
+                activeClassName={"active"}
+              />
+            </div>
           </div>
         </>
       )}
