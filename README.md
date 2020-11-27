@@ -34,6 +34,14 @@ When installation is complete, run it :
 yarn start
 ```
 
+## Packages
+
+- [React Router Dom](https://reacttraining.com/react-router/web/guides/quick-start)
+- [React Stripe Elements](https://github.com/stripe/react-stripe-elements)
+- [React Paginate](https://github.com/AdeleD/react-paginate)
+- [JS Cookie](https://github.com/js-cookie/js-cookie)
+- [Axios](https://github.com/axios/axios)
+
 ## Contributing
 
 If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
