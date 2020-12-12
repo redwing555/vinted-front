@@ -8,8 +8,16 @@
 ## Overview
 
 **Vinted Clone made at [Le Reacteur](https://www.lereacteur.io/) Bootcamp.**  
-6 screens are availables : Login, Signup, Home, Offer, Publish and Payment.<br />
+6 pages are availables : Login, Signup, Home, Offer, Publish and Payment.<br />
 Online demo : https://vinted-clone.netlify.app/
+
+## Packages
+
+- [React Router Dom](https://reacttraining.com/react-router/web/guides/quick-start)
+- [React Stripe Elements](https://github.com/stripe/react-stripe-elements)
+- [React Paginate](https://github.com/AdeleD/react-paginate)
+- [JS Cookie](https://github.com/js-cookie/js-cookie)
+- [Axios](https://github.com/axios/axios)
 
 ## Installation and usage
 
@@ -35,14 +43,6 @@ When installation is complete, run it :
 ```
 yarn start
 ```
-
-## Packages
-
-- [React Router Dom](https://reacttraining.com/react-router/web/guides/quick-start)
-- [React Stripe Elements](https://github.com/stripe/react-stripe-elements)
-- [React Paginate](https://github.com/AdeleD/react-paginate)
-- [JS Cookie](https://github.com/js-cookie/js-cookie)
-- [Axios](https://github.com/axios/axios)
 
 ## Contributing
 
