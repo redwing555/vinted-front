@@ -7,8 +7,9 @@
 
 ## Overview
 
-**Vinted Clone made at [Le Reacteur](https://www.lereacteur.io/) Bootcamp.**  
+Vinted Clone made at [Le Reacteur](https://www.lereacteur.io/) Bootcamp.
 6 pages are availables : Login, Signup, Home, Offer, Publish and Payment.<br />
+Backend link : https://github.com/cadupuy/vinted-backend
 Online demo : https://vinted-clone.netlify.app/
 
 ## Packages
