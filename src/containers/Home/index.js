@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
+import Loader from "react-loader-spinner";
+import axios from "axios";
+import ReactPaginate from "react-paginate";
+import "./index.css";
+
+// Components
 import ClothingItem from "../../components/HomeItem";
 import OrderByPrice from "../../components/OrderByPrice";
 import HeroBanner from "../../components/HeroBanner/index";
-import Loader from "react-loader-spinner";
-import axios from "axios";
-import "./index.css";
-import ReactPaginate from "react-paginate";
 
 const Home = ({ offers, setOffers, apiUrl, filter }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +25,6 @@ const Home = ({ offers, setOffers, apiUrl, filter }) => {
   const [sort, setSort] = useState("");
 
   const handlePageClick = (event) => {
-    console.log(event);
     setPage(event.selected + 1);
   };
 

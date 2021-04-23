@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-
 import axios from "axios";
 import "./index.css";
+
 const SignUp = ({ setUser, apiUrl }) => {
   let history = useHistory();
 

@@ -1,12 +1,13 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
 import "./index.css";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import Logo from "../../assets/img/vinted.png";
+// Components
 import SearchBar from "../SearchBar";
+
+// Icons & Images
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Logo from "../../assets/img/vinted.png";
 
 const Header = ({ setUser, token, setMobileMenu, mobileMenu, setFilter }) => {
   const handleMobile = () => {

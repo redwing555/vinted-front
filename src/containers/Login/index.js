@@ -33,7 +33,6 @@ const Login = ({ setUser, apiUrl }) => {
       if (response.data.token) {
         const token = response.data.token;
         setUser(token);
-
         history.push(fromPublish ? "/publish" : "/");
       }
     } catch (error) {

@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+
+// Components
 import CheckoutForm from "../../components/CheckoutForm/index";
 
 // Public key Stripe

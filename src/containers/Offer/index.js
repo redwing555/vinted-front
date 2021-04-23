@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import OfferItem from "../../components/OfferItem/index";
 import { useParams } from "react-router-dom";
 import Loader from "react-loader-spinner";
-
 import axios from "axios";
+
+// Components
+import OfferItem from "../../components/OfferItem/index";
 
 const Offer = ({ apiUrl }) => {
   const [offer, setOffer] = useState([]);

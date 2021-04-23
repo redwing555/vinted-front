@@ -154,7 +154,7 @@
   background-color: white;
   padding: 24px;
   margin: 20px 0;
-  box-shadow: 0 0 2px gray;
+  box-shadow: 0 10px 10px 0 rgba(46, 51, 51, 0.03);
 }
 .file-select > p {
   margin: 0 0 10px 0;
@@ -169,7 +169,7 @@
 }
 .input-design-default {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   border: 1px solid #0ab1ba;
   border-radius: 4px;

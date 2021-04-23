@@ -1,8 +1,8 @@
 import React from "react";
-
-import "./index.css";
 import { Link } from "react-router-dom";
+import "./index.css";
 
+// Images
 import Banner from "../../assets/img/banner.jpeg";
 import Tear from "../../assets/img/tear.svg";
 

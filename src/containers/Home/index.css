@@ -40,9 +40,9 @@
 
 .loading-home {
   width: 100vw;
-  height: 50%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   margin-top: 80px;
+  padding-bottom: 100px;
 }

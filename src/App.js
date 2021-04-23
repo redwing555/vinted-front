@@ -1,20 +1,25 @@
 import React, { useState } from "react";
-import "./App.css";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
-import Header from "./components/Header";
+import Cookies from "js-cookie";
+import "./App.css";
+
+// Containers
 import Home from "./containers/Home";
 import Payment from "./containers/Payment";
 import Offer from "./containers/Offer";
 import Publish from "./containers/Publish";
 import Login from "./containers/Login";
 import SignUp from "./containers/SignUp";
-import Cookies from "js-cookie";
 
+// Components
+import Header from "./components/Header";
+
+// Icons
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faSearch,

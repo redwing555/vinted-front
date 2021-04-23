@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./index.css";
 import { Redirect } from "react-router-dom";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
+import "./index.css";
 
 const Publish = ({ token, apiUrl }) => {
   let history = useHistory();
@@ -16,7 +16,6 @@ const Publish = ({ token, apiUrl }) => {
   const [condition, setCondition] = useState("");
   const [city, setCity] = useState("");
   const [price, setPrice] = useState("");
-  console.log(file);
 
   const handleTitle = (ev) => {
     setTitle(ev.target.value);

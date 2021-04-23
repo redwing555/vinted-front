@@ -1,6 +1,8 @@
 import React from "react";
-import "./index.css";
 import { useHistory } from "react-router-dom";
+import "./index.css";
+
+// Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const OfferItem = ({ offer }) => {
