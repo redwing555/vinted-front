@@ -20,7 +20,7 @@
 
 .hero-banner p,
 .mobile-description p {
-  color: #09aeb8;
+  color: var(--primary-color);
   font-size: 14px;
   margin-right: 50px;
   margin-top: 30px;
@@ -59,7 +59,7 @@
 .mobile-description button {
   font-size: 16px;
   line-height: 22px;
-  background-color: #09aeb8;
+  background-color: var(--primary-color);
   border: none;
   outline: none;
   color: white;
@@ -68,6 +68,11 @@
   margin-left: 40px;
   margin-top: 30px;
   cursor: pointer;
+}
+
+.hero-banner button:hover,
+.mobile-description button:hover {
+  opacity: 0.9;
 }
 
 /* RESPONSIVE DESIGN */

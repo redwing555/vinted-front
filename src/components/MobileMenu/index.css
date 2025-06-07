@@ -25,9 +25,9 @@
 
   .login-signup,
   .logout {
-    border: 1px solid #09aeb8;
+    border: 1px solid var(--primary-color);
     background-color: white;
-    color: #09aeb8;
+    color: var(--primary-color);
     font-size: 13px;
     border-radius: 5px;
     padding: 7px 15px;
@@ -39,7 +39,7 @@
   }
 
   .logout {
-    background-color: #c2175b;
+    background-color: var(--accent-color);
     color: white;
     border: none;
     padding: 8px 15px;
@@ -47,13 +47,17 @@
 
   .mobile-menu button {
     border: none;
-    background-color: #09aeb8;
+    background-color: var(--primary-color);
     color: #fff;
     border-radius: 5px;
     padding: 7px 15px;
     outline: none;
     cursor: pointer;
     width: 100%;
+  }
+
+  .mobile-menu button:hover {
+    opacity: 0.9;
   }
 
   .mobile-menu svg {

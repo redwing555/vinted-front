@@ -1,6 +1,7 @@
 /* HEADER  */
 header {
-  border-bottom: 1px solid #12e5f0;
+  border-bottom: 1px solid var(--primary-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px 0;
   position: fixed;
   top: 0px;
@@ -57,9 +58,9 @@ header img {
 
 header .login-signup,
 header .logout {
-  border: 1px solid #09aeb8;
+  border: 1px solid var(--primary-color);
   background-color: white;
-  color: #09aeb8;
+  color: var(--primary-color);
   font-size: 13px;
   border-radius: 5px;
   padding: 7px 15px;
@@ -70,7 +71,7 @@ header .logout {
 }
 
 header .logout {
-  background-color: #c2175b;
+  background-color: var(--accent-color);
   color: white;
   border: none;
   padding: 8px 15px;
@@ -78,12 +79,18 @@ header .logout {
 
 header button {
   border: none;
-  background-color: #09aeb8;
+  background-color: var(--primary-color);
   color: #fff;
   border-radius: 5px;
   padding: 7px 15px;
   outline: none;
   cursor: pointer;
+}
+
+header .login-signup:hover,
+header .logout:hover,
+header button:hover {
+  opacity: 0.9;
 }
 
 header .menu-mobile {

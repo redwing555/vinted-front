@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import axios from "axios";
+import { PRIMARY_COLOR } from "../../theme";
 
 // Components
 import OfferItem from "../../components/OfferItem/index";
@@ -29,7 +30,7 @@ const Offer = ({ apiUrl }) => {
     <div className="loading">
       <Loader
         type="Oval"
-        color="#09aeb8"
+        color={PRIMARY_COLOR}
         height={100}
         width={100}
         timeout={99999}

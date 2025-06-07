@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Loader from "react-loader-spinner";
 import axios from "axios";
+import { PRIMARY_COLOR } from "../../theme";
 import ReactPaginate from "react-paginate";
 import "./index.css";
 
@@ -53,7 +54,7 @@ const Home = ({ offers, setOffers, apiUrl, filter }) => {
         <div className="loading-home">
           <Loader
             type="Oval"
-            color="#09aeb8"
+            color={PRIMARY_COLOR}
             height={100}
             width={100}
             timeout={99999}
