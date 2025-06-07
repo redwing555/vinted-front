@@ -51,7 +51,7 @@
 .publish-section fieldset > div > input:focus {
   font-size: 16px;
   outline: none;
-  border-bottom: 1px solid #09aeb8;
+  border-bottom: 1px solid var(--primary-color);
 }
 
 .publish-section fieldset > div:not(:last-child) {
@@ -77,7 +77,7 @@
 
 .publish-section input[type="submit"] {
   border: none;
-  background-color: #09aeb8;
+  background-color: var(--primary-color);
   color: #fff;
   border-radius: 5px;
   padding: 13px 17px;
@@ -85,6 +85,10 @@
   cursor: pointer;
   font-size: 16px;
   margin-top: 40px;
+}
+
+.publish-section input[type="submit"]:hover {
+  opacity: 0.9;
 }
 
 .publish-section input[type="checkbox"] {
@@ -140,7 +144,7 @@
 }
 
 .publish-section textarea:focus {
-  border-bottom: 1px solid #09aeb8;
+  border-bottom: 1px solid var(--primary-color);
 }
 
 .publish-section .cgu {

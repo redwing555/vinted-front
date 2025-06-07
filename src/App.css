@@ -1,5 +1,10 @@
 /* GLOBAL */
 
+:root {
+  --primary-color: #09aeb8;
+  --accent-color: #c2175b;
+}
+
 body {
   font-family: "Maison Neue", sans-serif;
 }

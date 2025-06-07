@@ -132,7 +132,7 @@
 
 .offer-product button {
   border: none;
-  background-color: #09aeb8;
+  background-color: var(--primary-color);
   color: #fff;
   border-radius: 5px;
   padding: 10px 15px;
@@ -143,6 +143,10 @@
   width: 100%;
   justify-content: center;
   margin-top: 20px;
+}
+
+.offer-product button:hover {
+  opacity: 0.9;
 }
 
 .offer-product a {

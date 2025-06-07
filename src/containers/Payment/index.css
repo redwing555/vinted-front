@@ -70,7 +70,7 @@
 }
 
 .payment input:focus {
-  border-bottom: 1px solid #09aeb8;
+  border-bottom: 1px solid var(--primary-color);
 }
 .payment img {
   width: 50px;
